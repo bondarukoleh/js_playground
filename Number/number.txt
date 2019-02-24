@@ -1,0 +1,23 @@
+Один тип переменных на 64 бита, необходимо срезать конец для точных сравнений.
+Передаются по значению.
+Infinity
+NaN
+isNaN(x)
+isFinite(x) - проверит число ли переданный аргумент, приведя его к числу
+parseInt()/parseFloat()
+.toString()
+Math.floor()/.ceil()/.round() - округление вверх, вниз, до ближайшего целого.
+.toFixed(n) - округление до указанного знака через Math.round()
+.toLocalString() - форматирует вывод красивенько.
+
+Rounding
+One of most often operations with numbers is the rounding.
+There are following built-in functions for rounding:
+Math.floor
+Rounds down: 3.1 becomes 3, and -1.1 becomes -2.
+Math.ceil
+Rounds up: 3.1 becomes 4, and -1.1 becomes -1.
+Math.round
+Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4 and -1.1 becomes -1.
+Math.trunc (not supported by Internet Explorer)
+Removes the decimal part: 3.1 becomes 3, -1.1 becomes -1.
