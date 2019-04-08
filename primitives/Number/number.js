@@ -17,3 +17,12 @@ console.log(num1.toFixed(1)); // "12.4"
 than required, zeroes are appended to its end:*/
 let num2 = 12.34;
 console.log(num2.toFixed(5)); // "12.34000", added zeroes to make exactly 5 digits
+
+// NaN
+const isNaN = _ => {
+  const a = NaN, b = NaN;
+  console.log(a === b); // false
+  console.log(Object.is(a, b)); // true
+}
+// isNaN()
+
