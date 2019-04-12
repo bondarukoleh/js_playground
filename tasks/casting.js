@@ -31,8 +31,9 @@ Two exeptions -> == and + triggers default conversion modes (in most cases numer
 So ES5 style - is to redeclare toString and valueOf.
 ES6 - is to declare [Symbol.toPrimitive] method.
 
-* to Boolean - easiest - every not primitive type - is true.
-* 
+Boolean - easiest - every not primitive type - is true.
+
+typeof - string representation of value type.
 */
 
 const casting = _ => {
