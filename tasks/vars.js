@@ -2,6 +2,7 @@
 // You cannot declare two variables with same name (let, const)
 // let, const NEVER hoist
 // function expression since it a variable at the first place - also never hoist, declaration - do
+// let, const - is block scoped variables, var - is function scoped!
 
 const letConst = _ => {
   let letVar; // no error.
@@ -28,4 +29,17 @@ const hoist1 = _ => {
   };
   girl ();
 }
-hoist1()
+// hoist1()
+
+{
+  var declaredOuterVar;
+  function b(){
+    var declaredInnerVar = 'Inner'
+    declaredOuterVar = 'initialised from function'
+    declaredInnerButBecameGlobal = 'inner initialized'
+  }
+  b()
+  // console.log(declaredInnerVar); /*ReferenceError: declaredInnerVar is not defined*/
+  console.log(declaredOuterVar); /*  */
+  console.log(declaredInnerButBecameGlobal);
+}
