@@ -40,4 +40,4 @@ const f4 = _ => {
   }
   arr[2].showYourNumber();
 }
-f4()
+// f4()
