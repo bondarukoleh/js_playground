@@ -35,7 +35,7 @@ const thisCheck = _ => {
     length: 5,
     method: function (fn) {
       console.log('length, from object function', this.length);
-      console.log('length, from outer function', fn.call(this)); // undefined 
+      console.log('length, from outer function', fn.call(this)); // 5 
       // (in browser - it will be 10), because for fn this===global object, with is prohibited in es6
       console.log('length, from arguments[0] function', arguments[0]()); // 2 - for fn this === arguments object
     }

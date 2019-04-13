@@ -30,7 +30,7 @@ const f3 = _ => {
   }
   object.iife()
 }
-
+// f3()
 const f4 = _ => {
   let arr = [];
   for (var i = 0; i < 5; i++) {
