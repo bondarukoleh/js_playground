@@ -100,6 +100,7 @@ const toPrimitiveCheck = _ => {
     }
   }
   console.log(new A('myString') == 'myString'); // default, true
+  console.log(new A('myString') == 'myString'); // default, true
   console.log(new A('myString') + 'myString'); // default, myStringmyString
   console.log(+new A('myString')); // valueOf, NaN
   console.log(new A(4) / 2); // valueOf 2
