@@ -19,6 +19,10 @@ const checkTypeof = _ => {
 
   console.log(typeof NaN);
   console.log(Number.isNaN(NaN));
+  const a = ()=>{}
+  if(typeof null === 'object' && typeof a === 'function'){
+    console.log('aha');
+  }
 }
 // checkTypeof()
 

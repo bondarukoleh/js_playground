@@ -19,7 +19,7 @@ class A {
   }
 }
 const a = new A()
-// a.checkThis()
+a.checkThis()
 
 function Prefixer(prefix) {
   this.prefix = prefix;

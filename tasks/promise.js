@@ -9,6 +9,8 @@ const thenThing = _ => {
     .then((value) => {
       console.log(value);
       return 'returned from then'
+    }, (err) => {
+
     })
     .then((value) => {
       console.log(value);
