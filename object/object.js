@@ -26,4 +26,17 @@ const descriptors = _ => {
   newOne.b = 'new value' //silently doing nothing
   console.log(newOne);
 }
-descriptors()
+// descriptors()
+
+// writable – if true, can be changed, otherwise it’s read-only.
+// enumerable – if true, then listed in loops, otherwise not listed.
+// configurable – if true, the property can be deleted and these attributes can be modified, otherwise not.
+
+const getDesc = () => {
+  const obj = {
+    a: 1,
+    b: 2
+  }
+  console.log(Object.getOwnPropertyDescriptors(obj));
+}
+getDesc()
