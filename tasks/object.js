@@ -95,3 +95,30 @@ const clone = _ => {
   // Functions isn't copied at all(
 }
 // clone()
+
+
+class A {
+  constructor(){
+    this.arr = []
+  }
+}
+
+class B extends A {
+  add(){
+    this.arr.push(1)
+  }
+
+  add2(){
+    this.arr = []
+    this.arr.push(2)
+  }
+}
+
+const b1 = new B
+const b2 = new B
+
+b1.add()
+b1.add2()
+
+console.log(b1.arr);
+console.log(b2.arr);
