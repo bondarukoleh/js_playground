@@ -16,10 +16,10 @@ Lexical Environment (Scope, block of code) - is an internal JavaScript engine co
   scoping mechanism, and people often colloquially refer to them as scopes.
   It created each time, function (or block) is invoked.
 
-  Each function has [[Environment]] and [[Outer]] properties. When variable needs to be resolved, first it will be 
-  searched in [[Environment]], inside the function scope, and then it will looked in [[Outer]] link to outer scope.
+  Each function has [[Environment]] and [[Outer]] properties in Lexical scope. When variable needs to be resolved,
+  first it will be searched in [[Environment]], inside the function scope, and then it will looked in [[Outer]]
+  link to outer scope.
   
-  (sic!) [[Outer]] link of the new created lexical environment (new function), the JavaScript engine puts
-  the [[Environment]] of function that initiate newFunction creation, the environment in which the now-called
-  function was created!
+  (sic!) [[Outer]] link of the new-called function lexical environment, the JavaScript engine puts
+  the [[Environment]] of function where now-called function was CREATED!
 
