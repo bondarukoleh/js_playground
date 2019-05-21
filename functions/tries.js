@@ -59,7 +59,7 @@ function withInnerFunction(){
 function withoutInnerFunction(){
   const value = 'Second value';
   const {innerFunction, arrowInner} = withInnerFunction()
-  innerFunction() // 'First value' // because function was CREATED inside withInnerFunction
+  innerFunction() // 'First value' // because function was CREATED inside 
   arrowInner() // 'First value' as you can see arrow doesn't have this, but it has same scope behavior 
 }
 
