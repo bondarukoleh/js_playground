@@ -10,22 +10,26 @@ Animal.prototype.printName = function(){
 function Dog(name){
   Animal.call(this, name);
 }
+Dog.prototype = Object.create(Animal.prototype);
+// right now Dog.prototype.constructor -> Animal, that's not right
+console.log(Dog.prototype.constructor); //[Function: Animal]
+Dog.prototype.constructor = Dog; // that's better
+console.log(Dog.prototype.constructor); //[Function: Dog]
+Dog.prototype.dogMethod = function(){console.log('Dog method called')}
+const dog = new Dog("Rex");
+dog.printName();
+dog.dogMethod();
+
 
 function Cat(name){
   Animal.call(this, name);
 }
-
-Dog.prototype = Object.create(Animal.prototype);
-// right now Dog.prototype.constructor -> Animal, that's not right
-console.log(Dog.prototype.constructor); //[Function: Animal]
-Dog.prototype.constructor = Cat; // that's better
-const dog = new Dog("Rex");
-dog.printName();
-
 util.inherits(Cat, Animal);
 console.log(Cat.prototype.constructor); //{ [Function: Cat] super_: [Function: Animal] }
+Cat.prototype.catMethod = function(){console.log('Cat method called')}
 const cat = new Cat("Pussy");
 cat.printName();
+cat.catMethod();
 
 class A {
   constructor(){
