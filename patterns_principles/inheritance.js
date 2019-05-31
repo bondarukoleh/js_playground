@@ -16,10 +16,9 @@ console.log(Dog.prototype.constructor); //[Function: Animal]
 Dog.prototype.constructor = Dog; // that's better
 console.log(Dog.prototype.constructor); //[Function: Dog]
 Dog.prototype.dogMethod = function(){console.log('Dog method called')}
-const dog = new Dog("Rex");
+const dog = new Dog('Rex');
 dog.printName();
 dog.dogMethod();
-
 
 function Cat(name){
   Animal.call(this, name);
@@ -27,9 +26,18 @@ function Cat(name){
 util.inherits(Cat, Animal);
 console.log(Cat.prototype.constructor); //{ [Function: Cat] super_: [Function: Animal] }
 Cat.prototype.catMethod = function(){console.log('Cat method called')}
-const cat = new Cat("Pussy");
+const cat = new Cat('Pussy');
 cat.printName();
 cat.catMethod();
+
+function Rat(name){
+  Animal.call(this, name)
+}
+Rat.prototype.__proto__ = Animal.prototype
+console.log(Rat.prototype.constructor); // [Function Rat]
+console.log(Rat.prototype.__proto__.constructor); // [Function Animal]
+const rat = new Rat('Rat, ke ke ke');
+rat.printName()
 
 class A {
   constructor(){
