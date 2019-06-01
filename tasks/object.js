@@ -61,7 +61,7 @@ const checkTry = _ => {
 }
 // checkTry()
 
-const clone = _ => {
+const cloneObject = _ => {
   const toBeCloned = {
     simpleVar: 'simpleVar',
     nan: NaN,
@@ -74,11 +74,16 @@ const clone = _ => {
     array: []
   }
 
+  /* Be aware that JSON.stringify doesn't clone functions and properties with undefined value */
   const jsonSimpleClone = JSON.parse(JSON.stringify(toBeCloned))
   console.log('jsonSimpleClone: %j',jsonSimpleClone);
   console.assert(jsonSimpleClone !== toBeCloned, 'jsonSimpleClone are not a clone')
-  console.assert(jsonSimpleClone.innerObject !== toBeCloned.innerObject,
-     `jsonSimpleClone innerObjects are not cloned`)
+  console.assert(jsonSimpleClone.innerObject !== toBeCloned.innerObject, `jsonSimpleClone innerObjects are not cloned`)
+
+  /* Output with JSON. stringify(object_to_serialize, replacer, spaces_to_print) */
+  console.log(JSON.stringify(toBeCloned, null, ' '));
+  console.log(JSON.stringify(toBeCloned, null, '-|'));
+
 
   const objectAssignClone = Object.assign({}, toBeCloned)
   console.log('objectAssignClone: %j',objectAssignClone);
@@ -94,7 +99,7 @@ const clone = _ => {
 
   // Functions isn't copied at all(
 }
-// clone()
+cloneObject()
 
 
 class A {
