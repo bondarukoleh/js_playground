@@ -59,3 +59,34 @@ const promiseSequense = _ => {
   resolvePromiseOnebyAnother()
 }
 promiseSequense()
+
+
+
+const $request = require('request');
+function requestUrl(url) {
+    return new Promise((resolve, reject) => {
+        $request(url, (error, response, body) => {
+            if (error) {
+                reject(error);
+            }
+ 
+            resolve(body);
+        });
+    });
+}
+ 
+async function main() {
+    const baseUrl = 'http://numbersapi.com';
+    const urls = [
+        `${baseUrl}/10`,
+        `${baseUrl}/20`,
+        `${baseUrl}/30`,
+    ]
+   
+    for (let i = 0; i < urls.length; ++i) {
+        let body = await requestUrl(urls[i]);
+        console.log(body);
+    }
+}
+ 
+main();
