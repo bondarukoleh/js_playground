@@ -23,3 +23,22 @@ function fibonachi(num){
 }
 console.log(fibonachi(3));
 console.log(fibonachi(7));
+
+
+// a[0] = 0, a[1] = 1
+// a[2] = a[1] + a[0]
+// a[i] = a[i-1] + a[i-2]
+
+function getNum (index){
+  const first = 0;
+  const second = 1;
+  const resultArray = [first, second]
+  for(let i = 2; i <= index; i++){
+    const res = resultArray[i - 1] + resultArray[i - 2]
+    resultArray.push(res); 
+  }
+
+  console.log(resultArray[index]);
+}
+
+getNum(5);

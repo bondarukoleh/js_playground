@@ -11,12 +11,12 @@ class A {
   constructor() {
     this.data = 'InnerData'
   }
-  innnerFunc() {
+  innerFunc() {
     console.log(this.data)
   }
   checkThis() {
-    outerFunc(function () { this.innnerFunc() }.bind(this))
-    outerFunc(() => this.innnerFunc())
+    outerFunc(function () { this.innerFunc() }.bind(this))
+    outerFunc(() => this.innerFunc())
   }
 }
 const a = new A()
@@ -59,7 +59,6 @@ Prefixer.prototype.prefixArray = function (arr) {
   }.bind(this));
 };
 console.log(prefixer.addPrefixToArray(['Joe', 'Alex'])); // [ 'Hi Joe', 'Hi Alex' ]
-
 
 // •Traditional functions have a dynamic this, its value is determined by how they are called.
 // •Arrow functions have a lexical this, its value is determined by the surrounding scope.

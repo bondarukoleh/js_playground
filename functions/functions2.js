@@ -1,10 +1,9 @@
-function checkArgs(a, b) {
+function changeArgs(a, b) {
   console.log(`a: ${a}, b: ${b}, %j`, arguments)
   arguments[0] = 'new a value'
   console.log(`a: ${a}, b: ${b}, %j`, arguments)
 }
-
-// checkArgs('aValue', 'bValue')
+// changeArgs('aValue', 'bValue')
 
 const arrow = () => { console.log(this.value) }
 const func = function () { console.log(this.value) }
@@ -20,6 +19,7 @@ class Class {
     func()
     this.innerCalled();
     (() => { console.log(this.value) })()
+    returnArrow.bind(this)()()
   }
 }
 
