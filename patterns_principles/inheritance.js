@@ -13,7 +13,8 @@ function Dog(name){
 Dog.prototype = Object.create(Animal.prototype);
 // right now Dog.prototype.constructor -> Animal, that's not right
 console.log(Dog.prototype.constructor); //[Function: Animal]
-Dog.prototype.constructor = Dog; // that's better
+// Dog.prototype.constructor = Dog; // that's better
+Dog.prototype = Object.create(Animal.prototype, {constructor: { configurable: true, enumerable: false, value: Dog }});
 console.log(Dog.prototype.constructor); //[Function: Dog]
 Dog.prototype.dogMethod = function(){console.log('Dog method called')}
 const dog = new Dog('Rex');
