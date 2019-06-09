@@ -1,10 +1,10 @@
 cl = console.log;
-function showProperties(obj) {
+const showProperties = (obj) => {
   for (const p in obj) {
     cl(`Property: "${p}" is enumerable.`)
   }
 }
-function checkClassType() {
+const checkClassType = () => {
   class A {
     constructor() {
       this.aProp = 'A property';
@@ -33,7 +33,7 @@ function checkClassType() {
 }
 // checkClassType()
 
-function checkFunctionType() {
+const checkFunctionType = () => {
   function A() {
     this.aProp = 'aProp'
   }
@@ -64,3 +64,33 @@ function checkFunctionType() {
   cl('a instanceof A', a instanceof A);
 }
 // checkFunctionType()
+
+const checkInheritanceWithNew = () => {
+  function A(){}
+  A.prototype.aMethod = () => cl('A method')
+  function B(){}
+  B.prototype = new A();
+  Object.defineProperty(B.prototype, 'constructor', {enumerable: false, configurable: true, value: B})
+  B.prototype.bMethod = () => cl('B method')
+  const b = new B()
+  cl(b instanceof B)
+  cl(b instanceof A)
+  cl(b.constructor === B)
+  cl(b.__proto__.__proto__.constructor === A)
+}
+// checkInheritanceWithNew()
+
+//a instanceof A The instanceof operator works by checking whether the current prototype of the
+// A function is in the prototype chain of the a instance.
+const chechInstaceof = () => {
+  function A (){}
+  const a = new A();
+  a.__proto__ = {};
+  cl(a instanceof A); // false, because A.prototype isn't in prototype chain of a 
+
+  function B (){}
+  const b = new B();
+  B.prototype = {};
+  cl(b instanceof B)// false, because B.prototype isn't in prototype chain of a 
+}
+chechInstaceof()
