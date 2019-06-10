@@ -34,7 +34,7 @@ const checkClassType = () => {
 }
 // checkClassType()
 
-const checkFunctionType = () => {
+const checkFunctionInheritance = () => {
   function A() {
     this.aProp = 'aProp'
   }
@@ -58,14 +58,14 @@ const checkFunctionType = () => {
 const checkInheritanceWithNew = () => {
   function A(){}
   A.prototype.aMethod = () => cl('A method')
-  function B(){}
+  function B(){} // Pay attention when we use new in prototype, we don't need to .call(this) to parent class
   B.prototype = new A();
   Object.defineProperty(B.prototype, 'constructor', {enumerable: false, configurable: true, value: B})
   B.prototype.bMethod = () => cl('B method')
   const b = new B()
   checkInheritance({childInstance: b, childClass: B, parentClass: A})
 }
-// checkInheritanceWithNew()
+// checkFunctionInheritance()
 
 function setPrototypeOfCheck(){
   function A(){}
