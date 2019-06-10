@@ -1,4 +1,15 @@
-cl = console.log;
+const cl = console.log;
+function checkInheritance({childInstance, childClass, parentClass}){
+  cl(`childInstance instanceof childClass "${childInstance instanceof childClass}"`);
+  cl(`childInstance instanceof parentClass "${childInstance instanceof parentClass}"`);
+  cl(`childInstance.constructor === childClass "${childInstance.constructor === childClass}"`);
+  cl(`childInstance.constructor.name "${childInstance.constructor.name}"`);
+  cl(`childInstance.constructor === parentClass "${childInstance.constructor === parentClass}"`);
+  cl(`childClass.prototype.__proto__.constructor.name "${childClass.prototype.__proto__.constructor.name}"`);
+  showProperties(childInstance)
+  const newChild = new childClass.prototype.__proto__.constructor();
+  cl(`New instance of parentClass created from childInstance.__proto__.constructor "${newChild instanceof parentClass}"`);
+}
 const showProperties = (obj) => {
   for (const p in obj) {
     cl(`Property: "${p}" is enumerable.`)
@@ -19,17 +30,7 @@ const checkClassType = () => {
   }
 
   const b = new B();
-  cl(`b instanceof B`, b instanceof B);
-  cl(`b instanceof A`, b instanceof A);
-  cl(`b.constructor === B`, b.constructor === B);
-  cl(`b.constructor === A`, b.constructor === A);
-  cl(`b.constructor`, b.constructor);
-  cl(`B.prototype.__proto__.constructor`, B.prototype.__proto__.constructor);
-  cl('aProp in b', 'aProp' in b)
-  cl('b.hasOwnProperty aProp in b', b.hasOwnProperty('aProp'));
-  cl('b.hasOwnProperty bProp in b', b.hasOwnProperty('bProp'));
-  const a = new B.prototype.__proto__.constructor();
-  cl(`a instanceof A created from __proto__.constructor`, a instanceof A);
+  checkInheritance({childInstance: b, childClass: B, parentClass: A})
 }
 // checkClassType()
 
@@ -48,20 +49,9 @@ const checkFunctionType = () => {
   // this way, but why if we have ability to 
   B.prototype = Object.create(A.prototype, {constructor: { configurable: true, enumerable: false, value: B }});
   B.prototype.bMethod = () => cl('B method');
-  showProperties(B.prototype)
-  // B.prototype.__proto__ = A.prototype //cheat, but the same result
+  // B.prototype.__proto__ = A.prototype //cheat, but the same result. And __proto__ isn't enumerable
   const b = new B();
-  cl('b instanceof B', b instanceof B);
-  cl('b instanceof A', b instanceof A);
-  cl('b constr = B', b.constructor === B);
-  cl('b constr = A', b.constructor === A);
-  cl('b constr', b.constructor);
-  cl('b prototype proto construct', B.prototype.__proto__.constructor);
-  cl('aProp in b', 'aProp' in b)
-  cl('aProp ownProperty in b', b.hasOwnProperty('aProp'));
-  cl('bProp ownProperty in b', b.hasOwnProperty('bProp'));
-  const a = new B.prototype.__proto__.constructor();
-  cl('a instanceof A', a instanceof A);
+  checkInheritance({childInstance: b, childClass: B, parentClass: A})
 }
 // checkFunctionType()
 
@@ -73,16 +63,26 @@ const checkInheritanceWithNew = () => {
   Object.defineProperty(B.prototype, 'constructor', {enumerable: false, configurable: true, value: B})
   B.prototype.bMethod = () => cl('B method')
   const b = new B()
-  cl(b instanceof B)
-  cl(b instanceof A)
-  cl(b.constructor === B)
-  cl(b.__proto__.__proto__.constructor === A)
+  checkInheritance({childInstance: b, childClass: B, parentClass: A})
 }
 // checkInheritanceWithNew()
 
+function setPrototypeOfCheck(){
+  function A(){}
+  A.prototype.aMethod = () => cl('A method')
+  function B(){
+    A.call(this)
+  }
+  Object.setPrototypeOf(B.prototype, A.prototype);
+  B.prototype.bMethod = () => cl('B method')
+  const b = new B()
+  checkInheritance({childInstance: b, childClass: B, parentClass: A})
+}
+// setPrototypeOfCheck()
+
 //a instanceof A The instanceof operator works by checking whether the current prototype of the
 // A function is in the prototype chain of the a instance.
-const chechInstaceof = () => {
+const checkInstanceof = () => {
   function A (){}
   const a = new A();
   a.__proto__ = {};
@@ -93,4 +93,4 @@ const chechInstaceof = () => {
   B.prototype = {};
   cl(b instanceof B)// false, because B.prototype isn't in prototype chain of a 
 }
-chechInstaceof()
+// checkInstanceof()

@@ -1,4 +1,12 @@
 const util = require('util')
+/*
+We can provide inheritance via:
+1st - class/extend
+2nd - Parent.call(this) & Object.create(Parent.prototype, {constructor: {enumerable: false, ...}})
+3rd - Child.prototype = new Parent() & .defineProperty(Child.prototype, 'constructor', {enumerable: false, ...})
+4th - Parent.call(this) & .setPrototypeOf(Child.prototype, Parent.prototype) 
+5th - Child.prototype.__proto__ = Parent.prototype
+*/
 
 function Animal(name){
   this.name = name;
