@@ -33,7 +33,7 @@ const checkClassType = () => {
 }
 // checkClassType()
 
-const checkFunctionType = () => {
+const checkFunctionInheritance = () => {
   function A() {
     this.aProp = 'aProp'
   }
@@ -53,9 +53,9 @@ const checkFunctionType = () => {
   const b = new B();
   cl('b instanceof B', b instanceof B);
   cl('b instanceof A', b instanceof A);
-  cl('b constr = B', b.constructor === B);
-  cl('b constr = A', b.constructor === A);
-  cl('b constr', b.constructor);
+  cl('b constructor = B', b.constructor === B);
+  cl('b constructor = A', b.constructor === A);
+  cl('b constructor', b.constructor);
   cl('b prototype proto construct', B.prototype.__proto__.constructor);
   cl('aProp in b', 'aProp' in b)
   cl('aProp ownProperty in b', b.hasOwnProperty('aProp'));
@@ -68,7 +68,7 @@ const checkFunctionType = () => {
 const checkInheritanceWithNew = () => {
   function A(){}
   A.prototype.aMethod = () => cl('A method')
-  function B(){}
+  function B(){} // Pay attention when we use new in prototype, we don't need to .call(this) to parent class
   B.prototype = new A();
   Object.defineProperty(B.prototype, 'constructor', {enumerable: false, configurable: true, value: B})
   B.prototype.bMethod = () => cl('B method')
@@ -78,11 +78,11 @@ const checkInheritanceWithNew = () => {
   cl(b.constructor === B)
   cl(b.__proto__.__proto__.constructor === A)
 }
-// checkInheritanceWithNew()
+// checkFunctionInheritance()
 
 //a instanceof A The instanceof operator works by checking whether the current prototype of the
 // A function is in the prototype chain of the a instance.
-const chechInstaceof = () => {
+const checkInstanceof = () => {
   function A (){}
   const a = new A();
   a.__proto__ = {};
@@ -93,4 +93,4 @@ const chechInstaceof = () => {
   B.prototype = {};
   cl(b instanceof B)// false, because B.prototype isn't in prototype chain of a 
 }
-chechInstaceof()
+// checkInstanceof()
