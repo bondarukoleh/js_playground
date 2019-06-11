@@ -5,7 +5,8 @@ We can provide inheritance via:
 2nd - Parent.call(this) & Object.create(Parent.prototype, {constructor: {enumerable: false, ...}})
 3rd - Child.prototype = new Parent() & .defineProperty(Child.prototype, 'constructor', {enumerable: false, ...})
 4th - Parent.call(this) & .setPrototypeOf(Child.prototype, Parent.prototype) 
-5th - Child.prototype.__proto__ = Parent.prototype
+5th - util.inherits(ChildClass, ParentClass)
+6th - Child.prototype.__proto__ = Parent.prototype
 */
 
 function Animal(name){
