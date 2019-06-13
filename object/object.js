@@ -44,5 +44,6 @@ const getInnerProp = () => {
   const a = {outer: {inner: 'i'}}
   console.log('outer' in a) //true
   console.log('inner' in a) //false
+  console.log(Object.getOwnPropertyNames(a));
 }
-// getInnerProp()
+getInnerProp()
