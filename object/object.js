@@ -3,10 +3,9 @@ const merge = _ => {
   const second = { b: 2, f() { }, c: {} };
   const clone = Object.assign({}, second);
   console.log(clone === second); // false
-  console.log(clone.c === second.c); // true, clonning references to inner objects
+  console.log(clone.c === second.c); // true, cloning references to inner objects
   console.log(Object.assign(first, second));
   console.log({ ...first, ...second });
-
 }
 // merge()
 
@@ -39,4 +38,11 @@ const getDesc = () => {
   }
   console.log(Object.getOwnPropertyDescriptors(obj));
 }
-getDesc()
+// getDesc()
+
+const getInnerProp = () => {
+  const a = {outer: {inner: 'i'}}
+  console.log('outer' in a) //true
+  console.log('inner' in a) //false
+}
+// getInnerProp()

@@ -8,8 +8,8 @@ function checkHoistVarAndFunc(){
 // checkHoist() // as you can see first function is hoisted, and then re-write with variable
 
 function checkHoistVarAndFunc(){
-  console.log(`First: ${someLet}`)
+  console.log(`First: ${someLet}`) // ReferenceError: someLet is not defined
   let someLet = 1
   console.log(`Second: ${someLet}`)
 }
-checkHoistVarAndFunc()
+// checkHoistVarAndFunc()
