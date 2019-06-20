@@ -46,7 +46,8 @@ const asyncReduce = async () => {
     const newValue = addValuePromise(previousResult + val)
     acc = newValue
     return acc;
-  }, Promise.resolve(0))
+  //}, Promise.resolve(0)) -> could be like this, but since acc is a promise - we don't need this 
+  }, 0)
   console.log(result);
 }
 // asyncReduce()
