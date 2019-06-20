@@ -5,7 +5,7 @@ const promise = function (resolvePromise = true) {
   })
 }
 
-promise(false).then(console.log).catch(console.log)
+// promise(false).then(console.log).catch(console.log)
 
 const urls = ['first', 'second', 'third']
 const getUrl = function (url) {
@@ -32,4 +32,22 @@ const addValuePromise = function(value){
   })
 }
 
-valuesArray.reduce((resolved, cur) => resolved.then((value) => addValuePromise(value + cur)), Promise.resolve(0)).then(console.log)
+// valuesArray.reduce((resolved, cur) => resolved.then((value) => addValuePromise(value + cur)), Promise.resolve(0)).then(console.log)
+
+/*
+Reduce with async
+If we set the callback async - it will always return an promise to acc.
+We need to resolve acc each time.
+*/
+const asyncReduce = async () => {
+  const values = [1, 2, 3];
+  const result = await values.reduce(async (acc, val) => {
+    const previousResult = await acc;
+    const newValue = addValuePromise(previousResult + val)
+    acc = newValue
+    return acc;
+  }, Promise.resolve(0))
+  console.log(result);
+}
+// asyncReduce()
+
