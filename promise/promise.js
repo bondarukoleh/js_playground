@@ -1,3 +1,4 @@
+const cl = console.log;
 const promise = function (resolvePromise = true) {
   return new Promise(function (resolve, reject) {
     console.log('Doing some job...');
@@ -60,4 +61,31 @@ const asyncMap = async () => {
   })
   console.log('Done', result);
 }
-asyncMap()
+// asyncMap()
+
+function tryToCatch() {
+  function promise() {
+    // throw new Error('haha') // -> this will be caught by catch
+    return new Promise(function (res, rej) {
+      // throw new Error('haha') //-> this will set promise to rejected and will be caught by rej 
+      setTimeout(() => {        
+        throw new Error('haha') //-> error isn't caught by reject resolver because we didn't call rej,
+        // and catch statement - because error is thrown asynchronously but catch is synchronous.
+        console.log(`Getting ${url}`);
+        res()
+      }, 500)
+    })
+  }
+
+  try {
+    promise().then(res => {
+      cl('resolved ', res)
+    }, rej => {
+      cl('rejected ', rej)
+    })
+  } catch (e) {
+    cl('in catch')
+    cl(e)
+  }
+}
+// tryToCatch()
