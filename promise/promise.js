@@ -16,11 +16,11 @@ const getUrl = function (url) {
     }, 1000)
   })
 }
-urls.reduce((result, curUrl) => {
-  return result.then(_ => {
-    return getUrl(curUrl)
-  })
-}, Promise.resolve())
+// urls.reduce((result, curUrl) => {
+//   return result.then(_ => {
+//     return getUrl(curUrl)
+//   })
+// }, Promise.resolve())
 
 let valuesArray = [1, 2, 3]
 const addValuePromise = function(value){
@@ -52,3 +52,12 @@ const asyncReduce = async () => {
 }
 // asyncReduce()
 
+const asyncMap = async () => {
+  const values = [1, 2, 3];
+  const result = await values.map(async (val) => {
+    const r = await addValuePromise(val + 1)
+    return r
+  })
+  console.log('Done', result);
+}
+asyncMap()
