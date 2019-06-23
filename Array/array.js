@@ -20,6 +20,20 @@ cl(Array.isArray(arrFrom));
 const arrDestr = [... arguments];
 cl(Array.isArray(arrDestr));
 }
-f(o, s)
+//f(o, s)
+
+/*reusing push on simple object*/
+const obj = {
+	add (val){
+		Array.prototype.push.call(this,val)
+	}
+}
+obj.add('value')
+cl(Object.getOwnPropertyNames(obj))
+cl(obj[0])// value
+cl(obj.length)// 1
+
+
+
 
 
