@@ -1,3 +1,5 @@
+const assert = require('assert')
+
 const addingToArray = _ => {
   const arr = ['begining', 'midle', 'end'];
 
@@ -18,7 +20,7 @@ const checkIsArray = _ => {
 }
 // checkIsArray()
 
-const mutableArrayMethods = _ => { 
+const mutableArrayMethods = _ => {
   // Modify given array
   // copyWithin
   // fill
@@ -71,3 +73,40 @@ const iterationArrayMethods = _ => {
 }
 // iterationArrayMethods()
 
+const t1 = () => {
+  const samurai = [];
+  samurai.push("Oda");
+  samurai.unshift("Tomoe");
+  samurai.splice(1, 0, "Hattori", "Takeda");
+  samurai.pop();
+  console.log(samurai); //[ 'Tomoe', 'Hattori', 'Takeda' ]
+}
+// t1()
+
+const t2 = () => {
+  const samuraiClanMap = new Map();
+  const samurai1 = { name: "Toyotomi" };
+  const samurai2 = { name: "Takeda" };
+  const samurai3 = { name: "Akiyama" };
+  const oda = { clan: "Oda" };
+  const tokugawa = { clan: "Tokugawa" };
+  const takeda = { clan: "Takeda" };
+  samuraiClanMap.set(samurai1, oda);
+  samuraiClanMap.set(samurai2, tokugawa);
+  samuraiClanMap.set(samurai2, takeda);
+
+  assert(samuraiClanMap.size === 3, "There are three mappings"); // fail
+  assert(samuraiClanMap.has(samurai1), "The first samurai has a mapping");
+  assert(samuraiClanMap.has(samurai3), "The third samurai has a mapping"); //fail
+}
+// t2()
+
+const t3 = () => {
+  const samurai = new Set(["Toyotomi", "Takeda", "Akiyama", "Akiyama"]);
+  assert(samurai.size === 4, "There are four samurai in the set"); //fail
+  samurai.add("Akiyama");
+  assert(samurai.size === 5, "There are five samurai in the set"); //fail
+  assert(samurai.has("Toyotomi", "Toyotomi is in!"));
+  assert(samurai.has("Hattori", "Hattori is in!")); //fail
+}
+// t3()
