@@ -1,5 +1,5 @@
 /*The Object.freeze() - no changes to object at all;
-new properties not changed, added, removed, changes to enumerability, configurability,
+properties not changed, added, removed, changes to enumerability, configurability,
 or writability - prohibited. prototype not changed.*/
 
 const freeze = () => {
@@ -20,7 +20,7 @@ const freeze = () => {
 }
 // freeze()
 
-/*The Object.seal() new properties nit added, marking all existing properties as non-configurable. 
+/*The Object.seal() new properties not added, marking all existing properties as non-configurable. 
 properties can still be changed as long as they are writable. */
 const seal = () => {
   let o = {prop: 1};
@@ -46,7 +46,7 @@ const preventExtension = () => {
   o.prop = 2;
   console.log(o.prop); // changed
   o.newValue = 3; // silently not added
-  console.log(o.newValue);// not changed
+  console.log(o.newValue);// undefined
   console.log(Object.isExtensible(o)); // false
 }
 // preventExtension()
