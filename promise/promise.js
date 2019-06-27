@@ -89,3 +89,40 @@ function tryToCatch() {
   }
 }
 // tryToCatch()
+
+/* return / await in async function - it's just a matter of where you want to wait for promise
+to be resolved */
+async function func() {
+  const p = (flag, t, ids) => new Promise((res, rej) => {
+    setTimeout(() => {
+      if(flag){
+        res({flag, ids})
+      } else {
+        rej({flag, ids})
+      }
+    }, t)
+  })
+  /* return p(false, 1000, '1') && sleep(true, 5000, '2') // -> in this situation promise always will 
+  be resolved, because p(false, 1000, '1') -> it's just a promise that won't go anywhere, since 
+  call to p will return Promise{pending} -> it will be true, and we will return another Promise{pending}
+  that goes after && operator.
+
+  return await p(false, 1000, '1') -> will wait for this promise to be resolved/rejected to some value, 
+  and return this value, but since we in async function - we wrap everything in Promise - and we return
+  another promise with this value. So it's not a big sense to return await like this.
+
+  But when we want to compute some statement like && -> it has sense. Because we need to wait for first
+  promise to resolved/rejected and than depend on result - we can return result of first promise, 
+  or return second promise to be resolved on called side.
+  */
+ return await p(false, 1000, 1) && /*await here is always not necessary*/ p(true, 2000, 2);
+}
+
+async function checkReturnFromAsync(){
+  func().then((r) => {
+  console.log('RESOLVED', r)
+  }, (e) => {
+    console.log('REJECTED', e)
+  })
+} 
+// checkReturnFromAsync()
