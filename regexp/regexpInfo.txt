@@ -37,3 +37,29 @@ $ Конец строки - \d{3}$ -> 'test123'
 i выполнение поиска не чувствительного к регистру.
 g выполнение глобального поиска.
 m многострочный режим.
+
+
+So we have two types of regexp.
+Literal - /some_pattern/igm;
+From constructor - new RegExp("some_pattern", "igm");
+
+From constructor regexp often created when you know vaue you want to match in runtime.
+
+Regexp has two phases, compiling, and executing.
+Compiling - when regexp pattern comtiling in JS inner object, and ready to be used.
+Executing - when JS using this object.
+Be aware that each regexp object is uniq, it's not chashed (maybe in some browser, but it's not a fact)
+so /t/i and /t/i -> it's two different objects in cash, so we should create this object only once and 
+use it further (preferably).
+
+Five flags can be assosiated with regexp:
+■ i — Makes the regex case-insensitive, so /test/i matches not only test, but also
+Test, TEST, tEsT, and so on.
+■ g — Matches all instances of the pattern, as opposed to the default of local, which
+matches only the first occurrence. More on this later.
+■ m — Allows matches across multiple lines, as might be obtained from the value of
+a textarea element.
+■ y — Enables sticky matching. A regular expression performs sticky matching in
+the target string by attempting to match from the last match position.
+■ u — Enables the use of Unicode point escapes (\u{...}).
+
