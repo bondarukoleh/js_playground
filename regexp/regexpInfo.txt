@@ -63,3 +63,14 @@ a textarea element.
 the target string by attempting to match from the last match position.
 ■ u — Enables the use of Unicode point escapes (\u{...}).
 
+Terms and opertors.
+1. Exact matching: /some_exat_match/i
+2. Matching from a "class of charachters". 
+  Finite set of charachters that we want to match. [abc] - matcher only single charachter from set. To match anything, but a class
+  add ^ inside brackets [^abc] - anything but "a, b, c". Also we can add "range" of values. [a-c] -> charachter from a to c (a, b, c).
+3. Escaping - if we need some special charachter to match - escape it \^, \$, \-
+4. Start and end of string - ^ start, $ end. Note tat ^ - overload of sighn, because it also means the negate class.
+5. Repeat occurences. 
+  ? - optional, may appear only once and may not. /t?est/ - "test", "est". NOT - "ttest"
+  + - at least one or more. /t+est/ - "test", "ttest" 
+
