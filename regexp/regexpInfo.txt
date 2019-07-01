@@ -72,5 +72,18 @@ Terms and opertors.
 4. Start and end of string - ^ start, $ end. Note tat ^ - overload of sighn, because it also means the negate class.
 5. Repeat occurences. 
   ? - optional, may appear only once and may not. /t?est/ - "test", "est". NOT - "ttest"
-  + - at least one or more. /t+est/ - "test", "ttest" 
+  + - at least one or more. /t+est/ - "test", "tttest". NOT - "est"
+  * - 0 || 1 || >1, /t*est/ - "est", "test", "ttest"
+  {,2} - 0 || 1 || 2 - /t{,2}est/ exact number of repetition, "est", "test", "ttest". NOT - "tttest"
+  {1, 2} - 1 || 2 - /t{1,2}est/ - "test", "ttest". NOT - "est", "tttest"
+  {1,} - 1 || >1 - /t{1,}est/ - "test", "ttest". NOT - "est".
+
+  Repetition opertors (?, +, *, {}) can be greedy or not greedy. By default, they’re greedy:
+They will consume all the possible characters that make up a match. Annotating the
+operator with a ? character (an overload of the ? operator), as in a+?, makes the operation
+nongreedy: It will consume only enough characters to make a match.
+For example, if we’re matching against the string aaa, the regular expression /a+/
+would match all three a characters, whereas the nongreedy expression /a+?/ would
+match only one a character, because a single a character is all that’s needed to satisfy
+the a+ term.
 
