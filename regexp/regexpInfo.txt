@@ -78,12 +78,37 @@ Terms and opertors.
   {1, 2} - 1 || 2 - /t{1,2}est/ - "test", "ttest". NOT - "est", "tttest"
   {1,} - 1 || >1 - /t{1,}est/ - "test", "ttest". NOT - "est".
 
-  Repetition opertors (?, +, *, {}) can be greedy or not greedy. By default, they’re greedy:
+  Repetition opertors (?, +, *, {}) can be greedy or not greedy. By default, they’re greedy.
 They will consume all the possible characters that make up a match. Annotating the
 operator with a ? character (an overload of the ? operator), as in a+?, makes the operation
-nongreedy: It will consume only enough characters to make a match.
-For example, if we’re matching against the string aaa, the regular expression /a+/
-would match all three a characters, whereas the nongreedy expression /a+?/ would
-match only one a character, because a single a character is all that’s needed to satisfy
-the a+ term.
+nongreedy: It will consume only enough characters to make a match. 'aaa'.match(/a+/) -> "aaa", 'aaa'.match(/a+?/) -> "a"
 
+Predefined character classes and character terms
+\t Horizontal tab
+\b Backspace
+\v Vertical tab
+\f Form feed, next page
+\r Carriage return
+\n Newline
+\cA : \cZ Control characters
+\u0000 : \uFFFF Unicode hexadecimal
+\x00 : \xFF ASCII hexadecimal
+. Any character, except for whitespace characters (\s)
+\d Any decimal digit; equivalent to [0-9]
+\D Any character but a decimal digit; equivalent to [^0-9]
+\w Any alphanumeric character including underscore; equivalent to [A-Za-z0-9_]
+\W Any character but alphanumeric and underscore characters; equivalent to [^A-Za-z0-9_]
+\s Any whitespace character (space, tab, form feed, and so on)
+\S Any character but a whitespace character
+\b A word boundary
+\B Not a word boundary (inside a word)
+
+Groups
+() - we can define group that we want to find in parentheses. /(ab)+/ -> 1 || >1 "ab" string.
+  When a part of a regex is grouped with parentheses, it serves double duty, also creating
+what’s known as a capture.
+
+Or
+/(ab)+|(ac)+/ -> means or one group or another.
+
+Backreferences
