@@ -106,9 +106,17 @@ Predefined character classes and character terms
 Groups
 () - we can define group that we want to find in parentheses. /(ab)+/ -> 1 || >1 "ab" string.
   When a part of a regex is grouped with parentheses, it serves double duty, also creating
-what’s known as a capture.
+what’s known as a capture. To make capture non-appeared in results -> (?:ab) -> finds "ab",
+but don't push it to result.
 
 Or
 /(ab)+|(ac)+/ -> means or one group or another.
 
 Backreferences
+Backreferences to captures defined in the regex. The notation for such a term is the
+backslash followed by the number of the capture to be referenced, beginning with 1,
+such as \1, \2, and so on.
+/([abc])\!\1/ -> instead of \1 will be only charachter that triggered match. It's not the
+same as [abc] ! [abc]. Where usefull for dome tag search /<(\w+)>(.+)<\/\1>/.
+
+Referencing captures.
