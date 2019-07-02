@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compileES6module": "babel ./modules/es6module/*.js -d ./modules/compiledToES5/"
+    "compileES6module": "babel ./modules/es6module/*.js -d ./modules/compiledToES5/",
+    "tryCompiled": "npm run compileES6module && node ./modules/compiledToES5/usage.js"
   },
   "repository": {
     "type": "git",
