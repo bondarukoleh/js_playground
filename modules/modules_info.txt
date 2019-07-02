@@ -1,0 +1,45 @@
+Modules should solve two problems:
+ - Hiding module internals
+ - Defining module interfaces
+
+ In Module pattern - there is a big problem - Subsequent extensions of the module can’t access previously
+defined internal module details.
+
+Two most popular - Asynchronous Module Definition (AMD) and CommonJS.
+
+AMD and CommonJS are competing module specification standards that allow us to
+specify JavaScript modules. Besides some differences in syntax and philosophy, the main
+difference is that AMD was designed explicitly with the browser in mind, whereas CommonJS
+was designed for a general-purpose JavaScript environment (such as servers, with
+Node.js)
+
+AMD
+Currently most popular AMD implementation is RequireJS, also implemented in Dojo toolkit.
+When you need to add as a <script> to page, or install as a package via npm, setup it and define modules
+via define('moduleName', ['jQuery', 'dependencies_of_current_module'], ($ /*jQuery as a first argument from
+dependencies*/, ...rest) => { /*module implementation*/ return {/*interface*/} })
+AMD -> is ASYNCHRONOUS, means it's loaded asynchronously, and not blocking browser work.
+
+CommonJS
+CommonJS is a module specification designed for a general-purpose JavaScript environment. Currently
+it has the biggest following in the Node.js community, where it's native. It is SYNCHRONOUS.
+CommonJS uses file-based modules, so we can specify one module per file. To each
+module, CommonJS exposes a variable, module, with a property, exports, which we can
+easily extend with additional properties. In the end, the content of module.exports is
+exposed as the module’s public interface. One module per file.
+Disadvantage of CommonJS - it's not native for browser, we can use browserify for it, or use RequireJS
+to define CommonJS modules variables like (require, exports, module).
+
+UMD
+The UMD (Universal Module Definition) pattern is used when our module needs to be imported by
+a number of different module loaders (e.g. AMD, CommonJS). So it's an ugly mix to make module 
+compatible on browser and server side.
+
+Luckily, the ECMAScript committee has recognized the need for a unified module
+syntax supported in all JavaScript environments, so ES6 defines a new module standard
+that should finally put these differences to rest.
+
+ES6 modules.
+Asynchronous, file-based, simple-syntax modules.
+To use them we need to compile our code to ES5 JS. We can use Traceur, Babel or any other
+compiler.
