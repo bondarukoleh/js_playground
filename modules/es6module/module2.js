@@ -1,5 +1,5 @@
 const name = 'Bob';
-const message = 'Hello';
+const message = 'This is exported in object with function';
 function sayHi () {
   console.log(`${message} to ${name}`)
 }

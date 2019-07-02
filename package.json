@@ -1,0 +1,25 @@
+{
+  "name": "js_playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compileES6module": "babel ./modules/es6module/*.js -d ./modules/compiledToES5/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondarukoleh/js_playground.git"
+  },
+  "author": "Oleh Bondaruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondarukoleh/js_playground/issues"
+  },
+  "homepage": "https://github.com/bondarukoleh/js_playground#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5"
+  }
+}
