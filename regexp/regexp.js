@@ -96,7 +96,7 @@ const referCaptures = () => {
 }
 
 }
-referCaptures()
+// referCaptures()
 
 const getTheReplaceStringByReference = () => {
   const str = 'camelCaseString'
@@ -130,3 +130,17 @@ const nonCapturedCapture = () => {
 }
 // nonCapturedCapture()
 
+const replaceFunction = () => {
+  const selfClosingTags = /^(area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)$/i;
+  let html = '<tag> some text <base/> other text <img/> text1 <not_self/> text2 <not_another_self/> text3 <tag>'
+  const parsed = html.replace(/(<(\w+))\/>/g, (fulMatch, beforeSlash, tag) => {
+    console.log(fulMatch);
+    console.log(beforeSlash);
+    console.log(tag);
+    return selfClosingTags.test(tag) ? fulMatch : `${beforeSlash}></${tag}>`
+  })
+  console.log(parsed);
+  // <tag> some text <base/> other text <img/> text1 <not_self></not_self>
+  //  text2 <not_another_self></not_another_self> text3 <tag></tag>
+}
+// replaceFunction()
