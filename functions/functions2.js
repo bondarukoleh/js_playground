@@ -23,4 +23,17 @@ class Class {
   }
 }
 
-new Class().checkThis()
+// new Class().checkThis()
+
+function CheckThis () {
+  this.whoIsIt = () => this;
+}
+
+const ob1 = new CheckThis() // here we set call context of function constructor
+console.log(ob1.whoIsIt() === ob1); // true
+const ob2 = {
+  whoIsIt: ob1.whoIsIt // and arrow function will grab context from where it was created.
+}
+console.log(ob2.whoIsIt() === ob2); // false
+const ob3 = new CheckThis()
+console.log(ob3.whoIsIt() === ob3); // true
