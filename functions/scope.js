@@ -1,11 +1,10 @@
 function aa(){
   console.log(f())
 }
-// const a = f() // error
+// const a = f() // error because it's not hoisted 
 // aa() // error because we invoking aa before f is initialized
 const f = () => 1;
 // aa() // not error because we invoking aa has access to [[outer]] scope where f is already initialized.
-// console.log(a)
 
 // global scope:
   // [[Environment]]: global scope
@@ -15,7 +14,7 @@ const f = () => 1;
 const value = 'global value'
 const func = function(){
   // func scope:
-    // [[Environment]]: func scope
+    // [[Environment]]: func (local) scope
     // innerValue
     // inner
     // [[Outer]] -> global scope
