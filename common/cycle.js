@@ -1,7 +1,8 @@
 const cl = console.log;
-const a = {l:{g: 'inner'}, o:'outer'}
-for(let aa in a){
-	cl(aa)
+const o = {outer1: {innerKey: 'innerValue'}, outer2: 'outerValue'};
+for (let key in o) {
+  cl(key) // outer1, outer2
 }
 
-cl('g' in a); cl('o' in a);
+cl('innerKey' in a); // false
+cl('outer2' in a); //true

@@ -18,11 +18,11 @@ class A {
 
 
 class B extends A {
-  constructor(){
+  constructor() {
     super()
     this.property = 'B'
   }
 }
 
 const b = new B()
-console.log(b.constructor.name);
+console.log(b.constructor.name)

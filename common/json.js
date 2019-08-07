@@ -8,7 +8,7 @@ const o = {
       return 'This will be in nested'
     }
   }
-}
+};
 
 console.log(JSON.stringify(o)); //{"inJson":"value","nested":"This will be in nested"}
 console.log(JSON.stringify(o, null, '-|'));
