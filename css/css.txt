@@ -1,0 +1,11 @@
+"." - class. ".some_class" , ".some_class1.some_class2" - finds elements with these classes in attributes,
+      ".some_class1 .some_class2" - find elements with some_class2 and with some_class1 in parent element.
+"#" - id, "#some_id"
+"*" - any, "#some_id *" - finds any child(s) of element with some_id
+"tag_name" - "p", "div p"
+"," - and, "p, div" - find all p elements and all div elements
+" " - inside, "div p" - find all p INSIDE (no matter encapsulation level)
+">" - child, "div > p" - find all p that is directly child (first encapsulation level) of div
+"+" - next element, after, "div + p" - select p that placed next after div, at the same level
+"~" - all after, "div ~ p" - select all p elements that are placed next after div, at the same level
+"[attribute_value]" - "[title]" - select all elements with title attribute
