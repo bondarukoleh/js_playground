@@ -1,6 +1,7 @@
 class ProxyClass {
-	constructor(){
+	constructor(addition_param = false){
 		this.someProperty = 'value';
+		this.param = addition_param;
 	}
 	someMethod (arg) {
 		console.log(arg)
@@ -14,10 +15,16 @@ function makeProxy(target){
 				console.log('setting some prop value: ', value)
 				target[key] = value;
 			}
+		},
+		construct(target, argArray, newTarget) {
+			console.log('Constructor called');
+			return new ProxyClass('Addition param from proxy');
 		}
 	})
 }
 
-const proxy = makeProxy(new ProxyClass())
-proxy.someProperty = 'new value';
-console.log(proxy);
+const MyClass = makeProxy(ProxyClass)
+const myInstance = new MyClass()
+myInstance.someProperty = 'new value';
+console.log(myInstance);
+console.log(Object.getPrototypeOf(myInstance));
