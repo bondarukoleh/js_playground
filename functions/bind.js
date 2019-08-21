@@ -1,7 +1,7 @@
 Function.prototype.myBind = function (context, ...predefinedArgs) {
     const self = this;
     return function(...args) {
-      predefinedArgs ? self.apply(context, [...predefinedArgs, ...args]) : self.apply(context, ...args)
+      predefinedArgs.length ? self.apply(context, [...predefinedArgs, ...args]) : self.apply(context, args)
     }
 }
 
