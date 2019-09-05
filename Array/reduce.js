@@ -53,3 +53,17 @@ const users = [
     Germany: ["Berlin"]
   } */
 }
+
+{
+  /* Build function recursively. *ucking hard to read */
+  const func = ['base', 'inner'].reduceRight((prev, cur) => {
+    console.log('In reduce')
+    return () => {
+      console.log('Messged: ', cur)
+      prev()
+    }
+  }, function (){
+    console.log('In start value function')
+  })
+  // func()
+}
