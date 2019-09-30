@@ -116,7 +116,7 @@ Backreferences
 Backreferences to captures defined in the regex. The notation for such a term is the
 backslash followed by the number of the capture to be referenced, beginning with 1,
 such as \1, \2, and so on.
-/([abc])\!\1/ -> instead of \1 will be only charachter that triggered match. It's not the
-same as [abc] ! [abc]. Where usefull for dome tag search /<(\w+)>(.+)<\/\1>/.
+/([abc])\!\1/ -> instead of \1 will be only character that triggered match. It's not the
+same as [abc] ! [abc]. Where useful for DOM tag search /<(\w+)>(.+)<\/\1>/.
 
 Referencing captures.
