@@ -1,6 +1,6 @@
 const f1 = _ => {
   (function(){
-    const a = 'value from function context';
+    const a = 'value from function scope';
     (function () {
       console.log(a);
     })()
@@ -24,8 +24,8 @@ const f3 = _ => {
   const object = {
     v: 'value',
     iife(){
-      (() => console.log(this.v))();
-      (function(){ console.log(this.v)})();
+      (() => console.log(this.v))(); // value
+      (function(){ console.log(this.v)})(); // undefined
     }
   }
   object.iife()

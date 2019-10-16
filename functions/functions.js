@@ -53,7 +53,7 @@ Prefixer.prototype.addPrefixToArray = function (arr) {
 };
 console.log(prefixer.addPrefixToArray(['Joe', 'Alex'])); // [ 'Hi Joe', 'Hi Alex' ]
 // Solution 3:bind(this)
-Prefixer.prototype.prefixArray = function (arr) {
+Prefixer.prototype.addPrefixToArray = function (arr) {
   return arr.map(function (x) {
     return this.prefix + x;
   }.bind(this));
@@ -62,7 +62,7 @@ console.log(prefixer.addPrefixToArray(['Joe', 'Alex'])); // [ 'Hi Joe', 'Hi Alex
 
 // •Traditional functions have a dynamic this, its value is determined by how they are called.
 // •Arrow functions have a lexical this, its value is determined by the surrounding scope.
-Prefixer.prototype.prefixArray = function (arr) {
+Prefixer.prototype.addPrefixToArray = function (arr) {
   return arr.map((x) => this.prefix + x) // I'm crying that's so nice
 };
 console.log(prefixer.addPrefixToArray(['Joe', 'Alex']));

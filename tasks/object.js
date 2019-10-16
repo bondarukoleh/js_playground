@@ -3,10 +3,12 @@ const trickWithObjectAsAKey = _ => {
   const a = {}
   const b = { key: 'b' }
   const c = { key: 'c' }
-  a[b] = 123; // b.toString() -> "[object Object]", same as c, so a - has only one "[object Object]"
+  a[b] = 123; /* Property in object - is a string, so when we do a[b] b.toString() called -> "[object Object]",
+               same as c, so a - has only one property "[object Object]"*/
   a[c] = 456;
-  console.log(a[b]);
+  console.log(a[b]); // 456
 }
+// trickWithObjectAsAKey()
 
 const closure = _ => {
   const hero = {
@@ -36,7 +38,7 @@ const thisCheck = _ => {
     method: function (fn) {
       console.log('length, from object function', this.length);
       console.log('length, from outer function', fn.call(this)); // 5 
-      // (in browser - it will be 10), because for fn this===global object, with is prohibited in es6
+      // (in browser - it will be 10), because for fn this===global object, witch is prohibited in es6
       console.log('length, from arguments[0] function', arguments[0]()); // 2 - for fn this === arguments object
     }
   };
@@ -51,7 +53,7 @@ const checkTry = _ => {
     try {
       throw new Error();
     } catch (x) { // hoisted var is revrited with with inner var in catch and don't ask that is some heavy shit
-      // const, let x = ... -> will cost errer that x is already been declared 
+      // const, let x = ... -> will cost error that x is already been declared 
       var x = 1, y = 2; // since x is now inner because of catch(x) - it stays here, but y wasn't rewritted is lives outer
       console.log(x); //1
     }
@@ -99,7 +101,7 @@ const cloneObject = _ => {
 
   // Functions isn't copied at all(
 }
-cloneObject()
+// cloneObject()
 
 
 class A {
@@ -125,5 +127,5 @@ const b2 = new B
 b1.add()
 b1.add2()
 
-console.log(b1.arr);
-console.log(b2.arr);
+console.log(b1.arr); // [2]
+console.log(b2.arr); // []

@@ -25,6 +25,7 @@ const thenThing = _ => {
     })
     .catch(console.log)
 }
+// thenThing()
 
 const promiseSequense = _ => {
   const useValueOfPreviousPromiseInNextOne = _ => {
@@ -39,7 +40,7 @@ const promiseSequense = _ => {
 
     [1, 2, 3].reduce((result, cur) => result.then((value) => firePromise(value + cur)), Promise.resolve(0))
   }
-  useValueOfPreviousPromiseInNextOne()
+  // useValueOfPreviousPromiseInNextOne()
   
   const resolvePromiseOnebyAnother = _ => {
     const getPromise = () => new Promise(function (resolve, reject) {
@@ -62,7 +63,7 @@ promiseSequense()
 
 
 
-const $request = require('request');
+// const $request = require('request');
 function requestUrl(url) {
     return new Promise((resolve, reject) => {
         $request(url, (error, response, body) => {
@@ -89,4 +90,4 @@ async function main() {
     }
 }
  
-main();
+// main();

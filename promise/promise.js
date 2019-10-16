@@ -55,7 +55,7 @@ const asyncReduce = async () => {
 
 const asyncMap = async () => {
   const values = [1, 2, 3];
-  const result = await values.map(async (val) => {
+  const result = values.map(async (val) => {
     const r = await addValuePromise(val + 1)
     return r
   })
@@ -102,7 +102,7 @@ async function func() {
       }
     }, t)
   })
-  /* return p(false, 1000, '1') && sleep(true, 5000, '2') // -> in this situation promise always will 
+  /* return p(false, 1000, '1') && p(true, 5000, '2') // -> in this situation promise always will 
   be resolved, because p(false, 1000, '1') -> it's just a promise that won't go anywhere, since 
   call to p will return Promise{pending} -> it will be true, and we will return another Promise{pending}
   that goes after && operator.
@@ -126,4 +126,4 @@ async function checkReturnFromAsync() {
     console.log('REJECTED', e)
   }
 }
-checkReturnFromAsync()
+// checkReturnFromAsync()

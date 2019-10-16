@@ -27,9 +27,9 @@ const hoist1 = _ => {
       console.log(x);
       var x = 20;
   };
-  girl ();
+  girl(); // undefined
 }
-// hoist1()
+hoist1()
 
 {
   var declaredOuterVar;
@@ -40,6 +40,6 @@ const hoist1 = _ => {
   }
   b()
   // console.log(declaredInnerVar); /*ReferenceError: declaredInnerVar is not defined*/
-  console.log(declaredOuterVar); /*  */
-  console.log(declaredInnerButBecameGlobal);
+  console.log(declaredOuterVar); // initialised from function
+  console.log(declaredInnerButBecameGlobal); // inner initialized
 }
