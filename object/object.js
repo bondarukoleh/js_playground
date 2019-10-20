@@ -16,8 +16,8 @@ const descriptors = _ => {
   Object.defineProperty(first, 'b', {
     value: 'b value',
     writable: false, // property value can be changed
-    enumerable: true, // property descriptor can be changed
-    configurable: false
+    enumerable: true, 
+    configurable: false // property descriptor can be changed
   })
   first.b = 'new value' //silently doing nothing
   const newOne = {a: 1}

@@ -25,7 +25,7 @@ const greedyRepetition = () => {
 
   console.log(greedyARegexp.exec(str)); // ['AAA', index: 12, input: 'Some sting. AAA repeats with AAA.' ]
   console.log(nonGreedyARegexp.exec(str)); //[ 'A', index: 12, input: 'Some sting. AAA repeats with AAA.' ]
-  console.log(greedyARegexpGlobal.exec(str)); // 'AAA', index: 12, input: 'Some sting. AAA repeats with AAA.' ]
+  console.log(greedyARegexpGlobal.exec(str)); // [ 'AAA', index: 12, input: 'Some sting. AAA repeats with AAA.' ]
   console.log(nonGreedyARegexpGlobal.exec(str)); //[ 'A', index: 12, input: 'Some sting. AAA repeats with AAA.' ]
 };
 // greedyRepetition()
