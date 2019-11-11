@@ -59,7 +59,7 @@ const promiseSequense = _ => {
   }
   resolvePromiseOnebyAnother()
 }
-promiseSequense()
+// promiseSequense()
 
 
 
@@ -83,7 +83,7 @@ async function main() {
         `${baseUrl}/20`,
         `${baseUrl}/30`,
     ]
-   
+
     for (let i = 0; i < urls.length; ++i) {
         let body = await requestUrl(urls[i]);
         console.log(body);
@@ -91,3 +91,4 @@ async function main() {
 }
  
 // main();
+
