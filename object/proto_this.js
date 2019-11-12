@@ -5,5 +5,5 @@ o.__proto__.cla = function (){
 	cl(this.a)
 }
 
-o.cla();
-o.__proto__.cla();
+o.cla(); // object
+o.__proto__.cla(); // proto

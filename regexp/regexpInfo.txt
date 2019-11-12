@@ -52,7 +52,7 @@ Be aware that each regexp object is uniq, it's not chashed (maybe in some browse
 so /t/i and /t/i -> it's two different objects in cash, so we should create this object only once and 
 use it further (preferably).
 
-Five flags can be assosiated with regexp:
+Five flags can be associated with regexp:
 ■ i — Makes the regex case-insensitive, so /test/i matches not only test, but also
 Test, TEST, tEsT, and so on.
 ■ g — Matches all instances of the pattern, as opposed to the default of local, which

@@ -59,7 +59,7 @@ const users = [
   const func = ['base', 'inner'].reduceRight((prev, cur) => {
     console.log('In reduce')
     return () => {
-      console.log('Messged: ', cur)
+      console.log('Messaged: ', cur)
       prev()
     }
   }, function (){
