@@ -23,6 +23,6 @@ const isNaN = _ => {
   const a = NaN, b = NaN;
   console.log(a === b); // false
   console.log(Object.is(a, b)); // true
-}
+};
 // isNaN()
 

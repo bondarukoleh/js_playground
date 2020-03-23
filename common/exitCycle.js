@@ -17,6 +17,6 @@ const forEach = () => {
   [1, 2].forEach((a) => {
     cl('for each', a);
     return; // NOT exited
-  })
+  });
 };
 // forEach()

@@ -11,34 +11,40 @@ const letConst = _ => {
   // console.log(fExpression);/* ReferenceError: fExpression is not defined*/
   console.log(fDeclaration);
   {
-    const a = 'inner'
-    console.log(a)
+    const a = 'inner';
+    console.log(a);
   }
-  const constVar = 'outher'
-  const fExpression = _ => { }
-  function fDeclaration() { }
+  const constVar = 'outher';
+  const fExpression = _ => {
+  };
+
+  function fDeclaration() {
+  }
+
   // constVar = 'asd' /*TypeError: Assignment to constant variable */
-}
+};
 
 const hoist1 = _ => {
   let x = 21;
   const girl = function () {
-      // var x is hoisted, but not defined
-      console.log(x);
-      var x = 20;
+    // var x is hoisted, but not defined
+    console.log(x);
+    var x = 20;
   };
   girl(); // undefined
-}
-hoist1()
+};
+hoist1();
 
 {
   var declaredOuterVar;
-  function b(){
-    var declaredInnerVar = 'Inner'
-    declaredOuterVar = 'initialised from function'
-    declaredInnerButBecameGlobal = 'inner initialized'
+
+  function b() {
+    var declaredInnerVar = 'Inner';
+    declaredOuterVar = 'initialised from function';
+    declaredInnerButBecameGlobal = 'inner initialized';
   }
-  b()
+
+  b();
   // console.log(declaredInnerVar); /*ReferenceError: declaredInnerVar is not defined*/
   console.log(declaredOuterVar); // initialised from function
   console.log(declaredInnerButBecameGlobal); // inner initialized

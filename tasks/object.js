@@ -1,14 +1,14 @@
 // let, const never hoist
 const trickWithObjectAsAKey = _ => {
-  const a = {}
-  const b = { key: 'b' }
-  const c = { key: 'c' }
+  const a = {};
+  const b = {key: 'b'};
+  const c = {key: 'c'};
   a[b] = 123; /* Property in object - is a string, so when we do a[b] b.toString() called -> "[object Object]",
                same as c, so a - has only one property "[object Object]"*/
   a[c] = 456;
   console.log(a[b]); // 456
-}
-// trickWithObjectAsAKey()
+};
+// trickWithObjectAsAKey();
 
 const closure = _ => {
   const hero = {
@@ -23,12 +23,13 @@ const closure = _ => {
   console.log(stoleSecretIdentity.call(hero));
   console.log(stoleSecretIdentity.bind(hero)());
   console.log(hero.getSecretIdentity());
-}
+};
 // closure()
 
 
 const thisCheck = _ => {
   const length = 10;
+
   function fn() {
     return this.length;
   }
@@ -44,7 +45,7 @@ const thisCheck = _ => {
   };
 
   obj.method(fn, 1);
-}
+};
 // thisCheck()
 
 const checkTry = _ => {
@@ -54,13 +55,14 @@ const checkTry = _ => {
       throw new Error();
     } catch (x) { // hoisted var is revrited with with inner var in catch and don't ask that is some heavy shit
       // const, let x = ... -> will cost error that x is already been declared 
-      var x = 1, y = 2; // since x is now inner because of catch(x) - it stays here, but y wasn't rewritted is lives outer
+      var x = 1, y = 2; // since x is now inner because of catch(x) - it stays here, but y wasn't rewritted is lives
+                        // outer
       console.log(x); //1
     }
     console.log(x);//undefined
     console.log(y);//2
   })();
-}
+};
 // checkTry()
 
 const cloneObject = _ => {
@@ -71,61 +73,63 @@ const cloneObject = _ => {
     'null': null,
     'number': 1,
     boolean: true,
-    'function': function(){},
+    'function': function () {
+    },
     innerObject: {innerObjectValue: 'innerObjectValue'},
     array: []
-  }
+  };
 
   /* Be aware that JSON.stringify doesn't clone functions and properties with undefined value */
-  const jsonSimpleClone = JSON.parse(JSON.stringify(toBeCloned))
-  console.log('jsonSimpleClone: %j',jsonSimpleClone);
-  console.assert(jsonSimpleClone !== toBeCloned, 'jsonSimpleClone are not a clone')
-  console.assert(jsonSimpleClone.innerObject !== toBeCloned.innerObject, `jsonSimpleClone innerObjects are not cloned`)
+  const jsonSimpleClone = JSON.parse(JSON.stringify(toBeCloned));
+  console.log('jsonSimpleClone: %j', jsonSimpleClone);
+  console.assert(jsonSimpleClone !== toBeCloned, 'jsonSimpleClone are not a clone');
+  console.assert(jsonSimpleClone.innerObject !== toBeCloned.innerObject, `jsonSimpleClone innerObjects are not cloned`);
 
   /* Output with JSON. stringify(object_to_serialize, replacer, spaces_to_print) */
   console.log(JSON.stringify(toBeCloned, null, ' '));
   console.log(JSON.stringify(toBeCloned, null, '-|'));
 
 
-  const objectAssignClone = Object.assign({}, toBeCloned)
-  console.log('objectAssignClone: %j',objectAssignClone);
-  console.assert(objectAssignClone !== toBeCloned, 'objectAssignClone are not a clone')  
+  const objectAssignClone = Object.assign({}, toBeCloned);
+  console.log('objectAssignClone: %j', objectAssignClone);
+  console.assert(objectAssignClone !== toBeCloned, 'objectAssignClone are not a clone');
   // console.assert(objectAssignClone.innerObject !== toBeCloned.innerObject,
   //   `objectAssignClone innerObjects are not cloned`) /*will fire*/
 
-  const spreadClone = {...toBeCloned}
-  console.log('spreadClone: %j',spreadClone);
-  console.assert(spreadClone !== toBeCloned, 'spreadClone are not a clone')  
+  const spreadClone = {...toBeCloned};
+  console.log('spreadClone: %j', spreadClone);
+  console.assert(spreadClone !== toBeCloned, 'spreadClone are not a clone');
   // console.assert(objectAssignClone.innerObject !== toBeCloned.innerObject,
   //   `spreadClone innerObjects are not cloned`) /*will fire*/
 
   // Functions isn't copied at all(
-}
+};
+
 // cloneObject()
 
 
 class A {
-  constructor(){
-    this.arr = []
+  constructor() {
+    this.arr = [];
   }
 }
 
 class B extends A {
-  add(){
-    this.arr.push(1)
+  add() {
+    this.arr.push(1);
   }
 
-  add2(){
-    this.arr = []
-    this.arr.push(2)
+  add2() {
+    this.arr = [];
+    this.arr.push(2);
   }
 }
 
-const b1 = new B
-const b2 = new B
+const b1 = new B;
+const b2 = new B;
 
-b1.add()
-b1.add2()
+b1.add();
+b1.add2();
 
 console.log(b1.arr); // [2]
 console.log(b2.arr); // []

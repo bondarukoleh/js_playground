@@ -25,7 +25,7 @@ function abortFetch() {
     .then(r => r.json())
     .then(response => {
       console.log('Got response!');
-      console.log(response)
+      console.log(response);
     })
     .catch(err => {
       if (err.name === 'AbortError') {

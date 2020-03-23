@@ -47,42 +47,49 @@ const casting = _ => {
   console.log(+"1" + "1" + "2"); //122
   console.log("A" - "B" + "2"); //NaN2
   console.log("A" - "B" + 2); //NaN, + - here is arithmetical
-  console.log(false == '0') // true
-  console.log(false === '0') // false
+  console.log(false == '0'); // true
+  console.log(false === '0'); // false
   console.log(1 < 2 < 3); // true
   console.log(3 > 2 > 1); // false
-  console.log(typeof undefined == typeof NULL); // true, since 'NULL' is not null as a type, but as variable NULL, js is case sencetive
+  console.log(typeof undefined == typeof NULL); // true, since 'NULL' is not null as a type, but as variable NULL, js
+                                                // is case sencetive
   console.log(typeof undefined == typeof null); // false, typeof null -> object, so they aren't equal
-  console.log((() => { var z = 1, y = z = typeof y; return z })()); // undefined, assignment operator moves from right 
+  console.log((() => {
+    var z = 1, y = z = typeof y;
+    return z;
+  })()); // undefined, assignment operator moves from right
   // to left, first hoisted var z becomes undefinet, sinse y is undefined, y = z -> undefined, than z becomes 1.
   console.log(JSON.stringify(NaN)); //null
   console.log(String(NaN)); //'NaN'
   console.log(null === null && null == undefined); //true, null equals to null or undefined, and that's it. 
   console.log(NaN === NaN); // false, NaN doesn't equal to anything, even itself, we need Number.isNaN() to check it.
-  console.log(true + false)             // 1
-  console.log(12 / "6")                 // 2
-  console.log("number" + 15 + 3)        // 'number153'
-  console.log(15 + 3 + "number")        // '18number'
-  console.log([1] > null)               // true
-  console.log("foo" + +"bar")          // 'fooNaN'
-  console.log('true' == true)           // false, since 'true' is string, but another operator is not string, numeric comparison
-  console.log(false == 'false')         // false
-  console.log(null == '')               // false
-  console.log(!!"false" == !!"true")    // true
-  console.log(['x'] == 'x')             // true 
-  console.log([] + null + 1)            // 'null1', somehow Array defaul converting is toString in this case, so '' + null + 1
-  console.log([1,2,3] == [1,2,3])       // false
-  console.log({}+[]+{}+[1])             // '0[object Object]1'
-  console.log(!+[]+[]+![])              // 'truefalse' +[] - 0. !+[] = !0 = true. true + [] ([] - '') = true + ''. true + '' + ![] (!true - false) = true + '' + false 8-\
-  console.log(new Date(0) - 0)          // 0, valueOf - 123343241324 - like, new Date(0) -> 0, 0 - 0 = 0 
-  console.log(new Date(0) + 0)          // 'Thu Jan 01 1970 02:00:00(EET)0', toSting
-}
+  console.log(true + false);             // 1
+  console.log(12 / "6");                 // 2
+  console.log("number" + 15 + 3);        // 'number153'
+  console.log(15 + 3 + "number");        // '18number'
+  console.log([1] > null);               // true
+  console.log("foo" + +"bar");          // 'fooNaN'
+  console.log('true' == true);           // false, since 'true' is string, but another operator is not string, numeric
+                                        // comparison
+  console.log(false == 'false');         // false
+  console.log(null == '');               // false
+  console.log(!!"false" == !!"true");    // true
+  console.log(['x'] == 'x');             // true
+  console.log([] + null + 1);            // 'null1', somehow Array defaul converting is toString in this case, so '' +
+                                        // null + 1
+  console.log([1, 2, 3] == [1, 2, 3]);       // false
+  console.log({} + [] + {} + [1]);             // '0[object Object]1'
+  console.log(!+[] + [] + ![]);              // 'truefalse' +[] - 0. !+[] = !0 = true. true + [] ([] - '') = true + ''.
+                                            // true + '' + ![] (!true - false) = true + '' + false 8-\
+  console.log(new Date(0) - 0);          // 0, valueOf - 123343241324 - like, new Date(0) -> 0, 0 - 0 = 0
+  console.log(new Date(0) + 0);          // 'Thu Jan 01 1970 02:00:00(EET)0', toSting
+};
 // casting()
 
 const toPrimitiveCheck = _ => {
   class A {
     constructor(value) {
-      this.value = value
+      this.value = value;
     }
 
     [Symbol.toPrimitive](prefferedType) {
@@ -99,10 +106,11 @@ const toPrimitiveCheck = _ => {
       }
     }
   }
+
   console.log(new A('myString') == 'myString'); // default, true
   console.log(new A('myString') + 'myString'); // default, myStringmyString
   console.log(+new A('myString')); // valueOf, NaN
   console.log(new A(4) / 2); // valueOf 2
   console.log(String(new A(1))); // toString '1'
-}
+};
 // toPrimitiveCheck()

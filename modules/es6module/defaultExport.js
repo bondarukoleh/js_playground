@@ -1,5 +1,5 @@
 export default class DefaultExported {
-  someMethod(){
+  someMethod() {
     return 'From export default class function';
   }
 }

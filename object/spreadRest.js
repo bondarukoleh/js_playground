@@ -26,19 +26,23 @@ const requiredParameterFunc = (needeParameter = throwError()) => console.log(nee
 
 
 // The spread operator lets you convert any iterable object to an Array
-console.log(Math.max(1, 2, ...[4, 5], 6));
-const map = new Map([[1, 'a'], [2, 'b']]);
-console.log([...map]);
+// console.log(Math.max(1, 2, ...[4, 5], 6));
+// const map = new Map([[1, 'a'], [2, 'b']]);
+// console.log([...map]);
 
 function dynamicPropertyExtraction() {
   /* Be aware! That it is not deletion, it is creation a new object, with removed getters and setters!!! */
   const o = {user: 1, pass: 2};
-  const extractThe = (propertyToDelete) => ({[propertyToDelete]: _, ...rest}) => rest;
+  const extractThe = (propertyToDelete) => ({[propertyToDelete]: value, ...rest}) => {
+    console.log(value); // 1
+    return rest;
+  };
 
   const deleteUserProperty = extractThe('user');
   console.log(deleteUserProperty(o)); //{ pass: 2 }
 }
-// dynamicPropertyDeletion();
+
+dynamicPropertyExtraction();
 
 function changePropertyOrder() {
   const o = {second: 2, first: 1};
@@ -46,6 +50,7 @@ function changePropertyOrder() {
 
   console.log(reorder(o)); //{ first: 1, second: 2 }
 }
+
 // changePropertyOrder();
 
 function setDefaults() {
@@ -56,6 +61,7 @@ function setDefaults() {
   console.log(setDefaultDescription(o)); //{ second: 2, first: 1, description: 'Default description.' }
   console.log(setDefaultDescription(o2)); //{ second: 2, first: 1, description: 'Set description.' }
 }
+
 // setDefaults();
 
 function renameProperties() {
@@ -64,6 +70,7 @@ function renameProperties() {
 
   console.log(renameNameProp(o)); //{ user: 2, pass: 1 }
 }
+
 // renameProperties();
 
 function addPropsWithCondition() {
@@ -76,4 +83,5 @@ function addPropsWithCondition() {
   console.log(addPropsIfPassed(o, {desc: 'abc', additionProp: 'aaa'}));
   // { user: 2, pass: 1, desc: 'abc', additionProp: 'aaa' }
 }
+
 // addPropsWithCondition();
