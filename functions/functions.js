@@ -6,21 +6,29 @@ Arrow functions also don’t have super
 REMEMBER: you cannot () => {}.bind(this) -> error. Only put it in variable, and then bind.
 */
 
-function outerFunc(func) { func() }
+function outerFunc(func) {
+  func();
+}
+
 class A {
   constructor() {
-    this.data = 'InnerData'
+    this.data = 'InnerData';
   }
+
   innerFunc() {
-    console.log(this.data)
+    console.log(this.data);
   }
+
   checkThis() {
-    outerFunc(function () { this.innerFunc() }.bind(this))
-    outerFunc(() => this.innerFunc())
+    outerFunc(function () {
+      this.innerFunc();
+    }.bind(this));
+    outerFunc(() => this.innerFunc());
   }
 }
-const a = new A()
-a.checkThis()
+
+const a = new A();
+a.checkThis();
 
 function Prefixer(prefix) {
   this.prefix = prefix;
@@ -63,6 +71,6 @@ console.log(prefixer.addPrefixToArray(['Joe', 'Alex'])); // [ 'Hi Joe', 'Hi Alex
 // •Traditional functions have a dynamic this, its value is determined by how they are called.
 // •Arrow functions have a lexical this, its value is determined by the surrounding scope.
 Prefixer.prototype.addPrefixToArray = function (arr) {
-  return arr.map((x) => this.prefix + x) // I'm crying that's so nice
+  return arr.map((x) => this.prefix + x); // I'm crying that's so nice
 };
 console.log(prefixer.addPrefixToArray(['Joe', 'Alex']));

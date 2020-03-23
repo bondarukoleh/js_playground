@@ -1,6 +1,6 @@
 class A {
   constructor() {
-    this.property = 'value'
+    this.property = 'value';
   }
 }
 
@@ -19,10 +19,10 @@ class A {
 
 class B extends A {
   constructor() {
-    super()
-    this.property = 'B'
+    super();
+    this.property = 'B';
   }
 }
 
-const b = new B()
-console.log(b.constructor.name)
+const b = new B();
+console.log(b.constructor.name);
