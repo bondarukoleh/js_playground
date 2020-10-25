@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tasks/exercises/*.spec.js --timeout 10000",
     "compileES6module": "babel ./modules/es6module/*.js -d ./modules/compiledToES5/",
     "tryCompiled": "npm run compileES6module && node ./modules/compiledToES5/usage.js"
   },
@@ -22,5 +22,9 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0"
   }
 }
