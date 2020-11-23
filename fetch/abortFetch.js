@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 function easyAbortXMLHttpRequest() {
   const xhr = new XMLHttpRequest();
   const method = 'GET';
@@ -42,4 +44,4 @@ function abortFetch() {
   }, 2000);
 }
 
-abortFetch();
+// abortFetch();

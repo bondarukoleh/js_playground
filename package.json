@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/bondarukoleh/js_playground#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5"
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "node-fetch": "2.6.1"
   }
 }
