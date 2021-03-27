@@ -39,11 +39,12 @@ const checkRandom = (func, ...args) => {
 };
 
 const randomFrom0ToInclude = () => {
-  const getRandomResult = (max) => Math.random() * max;
+  const getRandomResult = (max) => Math.fround(Math.random() * max) ;
   // Math.random() return from 0 to 0.99999, so we multiply it on max, and we'll got 0 or 4.99999 maximum (included)
-  printResult(getRandomResult(5), 5);
+  // printResult(getRandomResult(10), 5);
+ console.log(Math.floor(Math.random() * 10000000000));
 };
-// randomFrom0To()
+randomFrom0ToInclude()
 
 const randomFromRange = () => {
   const getRandomResult = (min, max) => min + Math.random() * (max - min);
@@ -87,7 +88,7 @@ const randomIntegerRangeWithRound = () => {
   // checkRandom(getRandomIntResultFinal, 1, 3) //Map { 2 => 36, 1 => 33, 3 => 31 }
   // Super true random
 };
-randomIntegerRangeWithRound();
+// randomIntegerRangeWithRound();
 
 
 const randomRangeWithFloor = () => {
