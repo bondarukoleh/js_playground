@@ -52,7 +52,8 @@ const nestedTemplates = () => {
 /*
 Tagged Templates.
 This allows us to write a function that accepts the string values from the Template Literal,
-and all of the expressions used in the template
+and all of the expressions used in the template.
+You cannot use tags or String.raw with regular strings.
 */
 
 const taggedTemplates = () => {
@@ -81,4 +82,24 @@ const taggedTemplates = () => {
   const greetingWeShow = censor`Hello! Name is - "${userInputsName}", surname - "${userInputsSurName}", middlename - "${userInputsMiddleName}"`;
   console.log(greetingWeShow);
 }
-taggedTemplates()
+// taggedTemplates()
+
+/*
+String.raw is a pre-defined tag function.
+It allows you to access the string without interpreting any backslash escape sequences.
+*/
+const rawString = () => {
+  console.log(String.raw`First line \n Second line`) // First line \n Second line
+
+  // With string.raw, no need for escape sequences
+  const path = String.raw`C:\Program Files\file.json`
+  console.log(path) // C:\Program Files\file.json
+}
+// rawString()
+
+const splitString = () => {
+  console.log("👋!".split("")) // ["�", "�", "!"]
+  console.log([..."👋!"]) // ["👋", "!"]
+}
+// splitString()
+
