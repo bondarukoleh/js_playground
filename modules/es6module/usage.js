@@ -11,3 +11,17 @@ console.log(defaultExportModule); // { default: [Function: DefaultExported], som
 console.log(new defaultExportModule.default().someMethod()); // From export default class function
 
 
+import {variable as importedVariable} from './changesWithTimeModule';
+import * as module1 from './changesWithTimeModule';
+import { variable } from './changesWithTimeModule';
+
+const {variable: createdVar} = module1;
+
+setTimeout(() => {
+  console.log(importedVariable); // "changed"
+  console.log(module1.variable); // "changed"
+  console.log(variable); // "changed"
+  console.log(createdVar); // "initial"
+}, 1000);
+
+
