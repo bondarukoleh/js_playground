@@ -25,8 +25,8 @@ class Class {
   }
 
   checkThis() {
-    arrow();
-    func();
+    arrow(); // undefined
+    func(); // undefined
     this.innerCalled(); // undefined, why? because this for innerCalled lexical, where it was created, means global.
     (() => {
       console.log(this.value);
