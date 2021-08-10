@@ -103,3 +103,9 @@ const splitString = () => {
 }
 // splitString()
 
+function emojiLength() {
+  console.log(`🥳`.length) // 2
+  console.log(`👯‍♀`.length) // 4
+}
+// emojiLength()
+

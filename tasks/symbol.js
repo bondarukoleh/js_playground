@@ -15,4 +15,25 @@ function checkSymbFor() {
   console.log(Symbol.keyFor(s)); // A - returns key from what symbol created
 }
 
-checkSymbFor();
+// checkSymbFor();
+
+function trickWithHideSymbolMethod() {
+  const hideMethod = Symbol();
+  const invokeHideMethod = (obj) => {
+    if(obj[hideMethod]) {
+      obj[hideMethod]()
+    }
+  }
+
+  const myObj = {
+    regularMethod() {
+
+    },
+    [hideMethod](){
+      console.log('Doing something not all entities should have');
+    }
+  }
+
+  invokeHideMethod(myObj)
+}
+trickWithHideSymbolMethod()

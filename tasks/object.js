@@ -131,5 +131,5 @@ const b2 = new B;
 b1.add();
 b1.add2();
 
-console.log(b1.arr); // [2]
-console.log(b2.arr); // []
+// console.log(b1.arr); // [2]
+// console.log(b2.arr); // []
