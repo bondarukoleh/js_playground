@@ -2,6 +2,10 @@ class A {
   constructor() {
     this.property = 'value';
   }
+
+  parentMethod() {
+    console.log('parent method');
+  }
 }
 
 // const a = A(); /* error, Class constructor A cannot be invoked without 'new' */
@@ -20,9 +24,16 @@ class A {
 class B extends A {
   constructor() {
     super();
-    this.property = 'B';
+    // this.property = 'B';
+  }
+
+  bMethod(){
+    super.parentMethod(); // we can call method from parent
+    console.log(super.property); // there is no property in prototype object for now, only in child, because only methods goes
+    // to prototype, properties - to object that is creating
   }
 }
 
 const b = new B();
 console.log(b.constructor.name);
+b.bMethod();

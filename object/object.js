@@ -47,6 +47,17 @@ const getInnerProp = () => {
   const a = {outer: {inner: 'i'}};
   console.log('outer' in a); //true
   console.log('inner' in a); //false
-  console.log(Object.getOwnPropertyNames(a));
+  console.log(Object.getOwnPropertyNames(a)); // ['outer']
 };
-getInnerProp();
+// getInnerProp();
+
+function dynamicParams(nameAddition) {
+  const createName = (param) => `someName${param}`;
+
+  const object = {
+    [createName(nameAddition)]: 'SomeValue'
+  }
+
+  console.log(Object.keys(object)[0]);
+}
+// dynamicParams('SomeAddition'); // someNameSomeAddition
