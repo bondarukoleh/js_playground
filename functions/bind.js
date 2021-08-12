@@ -31,4 +31,4 @@ function knowHowItsCalled() {
   WeirdFunc.call({'a': 1}) // undefined
 }
 
-knowHowItsCalled();
+// knowHowItsCalled();
