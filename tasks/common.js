@@ -37,3 +37,21 @@ const reverseTrick = _ => {
   console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 };
 // reverseTrick()
+
+function undefinedCheck() {
+  // if some smart ass will set undefined = true; We can avoid fail on this with void 0;
+  // void operator, takes one operand to its right-hand side and will always evaluate to undefined
+  let undefVar;
+  let undefined = true;
+  if(undefVar === undefined) {
+    // won't run since undefined is true now.
+    console.log('Logic works not as you expected')
+  }
+  if(undefVar === void 0) {
+    console.log(`This is what you should see`)
+  }
+  if (undefVar == null) { // not strict check will pass for both
+    console.log('Value is either null or undefined');
+  }
+}
+undefinedCheck()
