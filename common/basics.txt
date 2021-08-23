@@ -25,3 +25,11 @@ Everything else is truthy. That includes:
 {} (an empty object)
 function(){} (an “empty” function)
 */
+
+Any operator can be said to have four characteristics:
+Its arity: how many operands the operator accepts
+Its function: what the operator does with its operands and what it evaluates to
+Its precedence: how the operator will be grouped when used in combination
+with other operators
+Its associativity: how the operator will behave when neighbored with operators
+of the same precedence

@@ -109,3 +109,21 @@ function emojiLength() {
 }
 // emojiLength()
 
+
+function trickWithCasting() {
+  const obj = {
+    name: 'Forty two',
+    value: 42,
+    toString() {
+      return this.name;
+    },
+    valueOf() {
+      return this.value;
+    }
+  }
+
+  console.log(`${obj}`); // Forty two
+  console.log('' + obj); // 42
+}
+
+// trickWithCasting()
