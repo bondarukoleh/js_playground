@@ -36,6 +36,9 @@ Boolean - easiest - every not primitive type - is true.
 typeof - string representation of value type.
 */
 
+// Number('123'); // => 123 - casting, explicit conversion value to another type
+// +'123'; // => 123 - coercion, implicit conversion value to another type
+
 const casting = _ => {
   console.log("0 || 1 = " + (0 || 1)); //1
   console.log("1 || 2 = " + (1 || 2)); //1
