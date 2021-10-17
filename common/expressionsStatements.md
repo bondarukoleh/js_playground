@@ -51,3 +51,23 @@ function sum(a, b) {
 ```
 
 ### Blocks
+If we consider statements as containers of expressions, then we can consider blocks as containers of statements.
+In other languages, they are sometimes called `compound statements` as they allow several statements to exist together.
+Strictly speaking, blocks are statements. \
+Blocks are very rarely used as completely isolated units of code (there's very limited benefit from doing so).
+You'll usually find them within if, while, for and switch statements.
+
+### Scopes and declarations
+ - **The global environment**: There is only one of these, and it is considered the
+outer scope of all other scopes. It is the global context in which all other
+environments (that is, scopes) exist. The global environment mirrors a global
+object that can be referred to by window or self in the browser and global in
+Node.js.
+- **A module environment**: This environment will be created for each distinct
+JavaScript module that is run as part of a singular Node.js process or for
+each <script type="module"> in the browser.
+- **A function environment**: This environment will be in effect for every running
+function, however it is declared or invoked.
+- **A block environment**: This environment will be in effect for every block ({...})
+in your program, whether following another language construct, such
+as if(...) or while(...), or situated independently.
