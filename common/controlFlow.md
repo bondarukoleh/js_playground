@@ -71,6 +71,21 @@ Some of the errors:
  - ReferenceError: This indicates that an invalid reference value has been detected
  - RangeError: This indicates a value that is not in the set or range of allowable values
  - URIError: This indicates that a URI handling function was used in a way that is incompatible with its definition
-
-
+ 
 ### Statements of control flow
+
+The if statement.
+
+The for statement.
+Conventional for
+```js
+for (InitializerExpression; ConditionExpression; UpdateExpression) IterationBody
+```
+The purpose of each part is as follows:
+* The *InitializerExpression* initializes the iteration; this will be evaluated first and only once. 
+This can be any statement (it usually includes a let or var assignment, but doesn't need to).
+* The *ConditionExpression* checks whether the iteration may continue; this will be evaluated and coerced to a Boolean
+before each iteration to determine whether the next iteration will occur. This can be any expression.
+* The *UpdateExpression* finalizes each iteration, ready for the next iteration. This will be evaluated at the end of
+each iteration. This can be any statement.
+* The *IterationBody* contains the actual iteration logic—the code that will be evaluated on every iteration.
