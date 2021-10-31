@@ -189,4 +189,5 @@ if (a) {
 if (d) delta();
 ```
 
-Simplifying conditional spaghetti
+Asynchronous control flow
+Promises
