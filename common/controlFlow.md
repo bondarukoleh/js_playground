@@ -189,5 +189,28 @@ if (a) {
 if (d) delta();
 ```
 
-Asynchronous control flow
-Promises
+#### Asynchronous control flow
+
+##### Promises
+A Promise is an abstraction that surrounds the concept of an eventual value <br>
+At any given time a Promise will have a certain state:
+ - Pending: The Promise is awaiting its resolution (the asynchronous task has not yet completed).
+ - Settled: The Promise is no longer pending and has either been fulfilled or rejected:
+   - Fulfilled: The Promise has been successful and now has a value
+   - Rejected: The Promise has failed with an error
+
+Promises can be constructed via the `Promise` constructor, by passing a singular function argument `executor`
+that calls either a `resolve` or `reject` function to indicate either a settled value or an error.
+
+The ability to pass around promises just like plain objects makes them far more flexible than callbacks,
+and similar in spirit to an object that implements an Events API. However, with all of these mechanisms,
+it is necessary to create and pass around `functions` so that you can listen for future Events and then
+act on them. <br>
+The control flow of a program littered with callbacks, Events, and promises can be unclear. Even a small
+number of independently asynchronous Events can create a large variety of states throughout your application.
+A programmer can become very confused, as a result; the confusion relates to what is happening when.
+
+To avoid confusion, it's best to implement any timing-related code as transparently as possible, so that there
+is no room for misunderstanding.
+
+##### async and await
