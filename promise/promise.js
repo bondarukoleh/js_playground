@@ -48,7 +48,7 @@ const asyncReduce = async () => {
     const newValue = addValuePromise(previousResult + val);
     acc = newValue;
     return acc;
-    //}, Promise.resolve(0)) -> could be like this, but since acc is a promise - we don't need this 
+    //}, Promise.resolve(0)) -> could be like this, but since acc is a promise - we don't need this
   }, 0);
   console.log(result);
 };
@@ -69,7 +69,7 @@ function tryToCatch() {
   function promise() {
     // throw new Error('haha') // -> this will be caught by catch
     return new Promise(function (res, rej) {
-      // throw new Error('haha') //-> this will set promise to rejected and will be caught by rej 
+      // throw new Error('haha') //-> this will set promise to rejected and will be caught by rej
       setTimeout(() => {
         throw new Error('haha'); //-> error isn't caught by reject resolver because we didn't call rej,
         // and catch statement - because error is thrown asynchronously but catch is synchronous.
@@ -105,17 +105,17 @@ async function func() {
       }
     }, t);
   });
-  /* return p(false, 1000, '1') && p(true, 5000, '2') // -> in this situation promise always will 
-  be resolved, because p(false, 1000, '1') -> it's just a promise that won't go anywhere, since 
+  /* return p(false, 1000, '1') && p(true, 5000, '2') // -> in this situation promise always will
+  be resolved, because p(false, 1000, '1') -> it's just a promise that won't go anywhere, since
   call to p will return Promise{pending} -> it will be true, and we will return another Promise{pending}
   that goes after && operator.
 
-  return await p(false, 1000, '1') -> will wait for this promise to be resolved/rejected to some value, 
+  return await p(false, 1000, '1') -> will wait for this promise to be resolved/rejected to some value,
   and return this value, but since we in async function - we wrap everything in Promise - and we return
   another promise with this value. So it's not a big sense to return await like this.
 
   But when we want to compute some statement like && -> it has sense. Because we need to wait for first
-  promise to resolved/rejected and than depend on result - we can return result of first promise, 
+  promise to resolved/rejected and than depend on result - we can return result of first promise,
   or return second promise to be resolved on called side.
   */
   return await p(false, 1000, 1) && /*await here is always not necessary*/ p(true, 2000, 2);
@@ -131,3 +131,12 @@ async function checkReturnFromAsync() {
 }
 
 // checkReturnFromAsync()
+
+function checkThatPromise() {
+  const promiseFunction = async () => {}
+
+  if (promiseFunction() instanceof Promise ||
+    Object.prototype.toString.call(promiseFunction) === '[object AsyncFunction]' ) {
+    console.log('Yep, this is something promise related')
+  }
+}

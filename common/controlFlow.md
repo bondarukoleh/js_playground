@@ -214,3 +214,6 @@ To avoid confusion, it's best to implement any timing-related code as transparen
 is no room for misunderstanding.
 
 ##### async and await
+The `async` keyword is used to designate a function as asynchronous. <br>
+Doing this, effectively, wraps whatever the function returns in Promise (if it is not already Promise) <br>
+`await` keyword enables us to wait for the fulfillment (or rejection)
