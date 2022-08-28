@@ -16,7 +16,7 @@ const mockResponse = (opts: IMockResponse) => {
       if(url.includes("${opts.url}") && options.method === "${opts.method}") {
         return {
           json: () => Promise.resolve(${opts.shouldReturnBody}),
-          test: () => Promise.resolve(${JSON.stringify(opts.shouldReturnBody)}),
+          text: () => Promise.resolve(${JSON.stringify(opts.shouldReturnBody)}),
         };
       } else {
         return originalFetch(url, options)
