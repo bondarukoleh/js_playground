@@ -65,5 +65,5 @@ const users = [
   }, function () {
     console.log('In start value function');
   });
-  // func()
+  func()
 }

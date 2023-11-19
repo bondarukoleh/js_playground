@@ -43,15 +43,31 @@ function undefinedCheck() {
   // void operator, takes one operand to its right-hand side and will always evaluate to undefined
   let undefVar;
   let undefined = true;
-  if(undefVar === undefined) {
+  if (undefVar === undefined) {
     // won't run since undefined is true now.
     console.log('Logic works not as you expected')
   }
-  if(undefVar === void 0) {
+  if (undefVar === void 0) {
     console.log(`This is what you should see`)
   }
   if (undefVar == null) { // not strict check will pass for both
     console.log('Value is either null or undefined');
   }
 }
-undefinedCheck()
+// undefinedCheck()
+
+function breakLoop() {
+  function breakWhile() {
+    let i = 0;
+    do {
+      i++;
+      if (i === 3) {
+        console.log('Breaking...')
+        break;
+      }
+      console.log(`Iterator: ${i}`);
+    } while (i < 5)
+  }
+  // breakWhile()
+}
+breakLoop()

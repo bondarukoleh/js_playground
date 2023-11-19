@@ -1,9 +1,11 @@
 /*
 Arrow functions can’t run with new
 Arrow functions also have no "arguments" variable.
-functions methods .bind(this)/.call()/.apply() doesn’t create any binding on arrow. 
-Arrow functions also don’t have super 
+functions methods .bind(this)/.call()/.apply() doesn’t create any binding on arrow.
+Arrow functions also don’t have super
 REMEMBER: you cannot () => {}.bind(this) -> error. Only put it in variable, and then bind.
+
+function declaration hoists, function expression (with let or const) doesn't.
 */
 
 function outerFunc(func) {
