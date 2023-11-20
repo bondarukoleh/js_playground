@@ -66,7 +66,7 @@ const promiseSequense = _ => {
 // promiseSequense()
 
 
-// const $request = require('request');
+const $request = require('request');
 function requestUrl(url) {
   return new Promise((resolve, reject) => {
     $request(url, (error, response, body) => {

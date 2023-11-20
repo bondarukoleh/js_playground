@@ -131,7 +131,7 @@ async function checkReturnFromAsync() {
 }
 
 // checkReturnFromAsync()
-
+// checkThatPromise()
 function checkThatPromise() {
   const promiseFunction = async () => {}
 
