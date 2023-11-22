@@ -45,8 +45,13 @@ const users = [
     Berlin: 'Germany',
     Paris: 'France'
   };
-  let countries = Object.keys(cities).reduce(
-    (acc, k) => (acc[cities[k]] = [...(acc[cities[k]] || []), k], acc), {});
+  // let countries = Object.keys(cities).reduce(
+  //   (acc, k) => (acc[cities[k]] = [...(acc[cities[k]] || []), k], acc), {});
+  let countries = Object.entries(cities).reduce((acc, [city, country]) => {
+    acc[cities[city]] = [...(acc[country] || []), city];
+    return acc;
+  }, {})
+
   // countries is
   /* {
     France: ["Lyon", "Paris"],
@@ -56,7 +61,7 @@ const users = [
 
 {
   /* Build function recursively. *ucking hard to read */
-  const func = ['base', 'inner'].reduceRight((prev, cur) => {
+  const func = () => ['base', 'inner'].reduceRight((prev, cur) => {
     console.log('In reduce');
     return () => {
       console.log('Messaged: ', cur);
@@ -65,5 +70,5 @@ const users = [
   }, function () {
     console.log('In start value function');
   });
-  func()
+  // func()
 }

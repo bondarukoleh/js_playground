@@ -28,7 +28,7 @@ const mutableArrayMethods = _ => {
   // pop
   // push
   // reverse (returns reversed, and changes given array)
-  // shift 
+  // shift
   // sort (returns sorted, and changes given array)
   // splice
   // unshift
@@ -96,9 +96,9 @@ const t2 = () => {
   samuraiClanMap.set(samurai2, tokugawa);
   samuraiClanMap.set(samurai2, takeda);
 
-  assert(samuraiClanMap.size === 3, "There are three mappings"); // fail
-  assert(samuraiClanMap.has(samurai1), "The first samurai has a mapping");
-  assert(samuraiClanMap.has(samurai3), "The third samurai has a mapping"); //fail
+  assert(samuraiClanMap.size === 3, "There are not three mappings"); // fail
+  assert(samuraiClanMap.has(samurai1), "The first samurai does not have a mapping");
+  assert(samuraiClanMap.has(samurai3), "The third samurai does not have a mapping"); //fail
 };
 // t2()
 
