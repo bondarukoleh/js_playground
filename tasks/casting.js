@@ -24,9 +24,9 @@ then to the same type, before comparison.
 When we talking about coersion of objects -> different story. When we trying to coerse not-primitive type to
 primitive, js will call [[ToPrimitive]] method on the object, Numeric conversion first calls valueOf with a
 fallback to toString. String conversion does the opposite: toString followed by valueOf.
-If valueOf, toString return non-primitive - value is ignored. 
-Different operators can trigger different conversion depends on their PREFFERED TYPE, that they need to compare.
-Two exeptions -> == and + triggers default conversion modes (in most cases numeric, exept Date - that has string)
+If valueOf, toString return non-primitive - value is ignored.
+Different operators can trigger different conversion depends on their PREFERRED TYPE, that they need to compare.
+Two exceptions -> == and + triggers default conversion modes (in most cases numeric, except Date - that has string)
 
 So ES5 style - is to redeclare toString and valueOf.
 ES6 - is to declare [Symbol.toPrimitive] method.
@@ -55,16 +55,16 @@ const casting = _ => {
   console.log(1 < 2 < 3); // true
   console.log(3 > 2 > 1); // false
   console.log(typeof undefined == typeof NULL); // true, since 'NULL' is not null as a type, but as variable NULL, js
-                                                // is case sencetive
+                                                // is case sensitive
   console.log(typeof undefined == typeof null); // false, typeof null -> object, so they aren't equal
   console.log((() => {
     var z = 1, y = z = typeof y;
     return z;
   })()); // undefined, assignment operator moves from right
-  // to left, first hoisted var z becomes undefinet, sinse y is undefined, y = z -> undefined, than z becomes 1.
+  // to left, first hoisted var z becomes undefined, since y is undefined, y = z -> undefined, than z becomes 1.
   console.log(JSON.stringify(NaN)); //null
   console.log(String(NaN)); //'NaN'
-  console.log(null === null && null == undefined); //true, null equals to null or undefined, and that's it. 
+  console.log(null === null && null == undefined); //true, null equals to null or undefined, and that's it.
   console.log(NaN === NaN); // false, NaN doesn't equal to anything, even itself, we need Number.isNaN() to check it.
   console.log(true + false);             // 1
   console.log(12 / "6");                 // 2
@@ -78,7 +78,7 @@ const casting = _ => {
   console.log(null == '');               // false
   console.log(!!"false" == !!"true");    // true
   console.log(['x'] == 'x');             // true
-  console.log([] + null + 1);            // 'null1', somehow Array defaul converting is toString in this case, so '' +
+  console.log([] + null + 1);            // 'null1', somehow Array default converting is toString in this case, so '' +
                                         // null + 1
   console.log([1, 2, 3] == [1, 2, 3]);       // false
   console.log({} + [] + {} + [1]);             // '0[object Object]1'
@@ -95,8 +95,8 @@ const toPrimitiveCheck = _ => {
       this.value = value;
     }
 
-    [Symbol.toPrimitive](prefferedType) {
-      switch (prefferedType) {
+    [Symbol.toPrimitive](preferredType) {
+      switch (preferredType) {
         case 'string':
           console.log('toString called');
           return String(this.value);

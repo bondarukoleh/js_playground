@@ -30,7 +30,7 @@ const checkTypeof = _ => {
 
 const reverseTrick = _ => {
   const arr1 = "john".split('');
-  const arr2 = arr1.reverse(); // reverse returns a referense to initial array
+  const arr2 = arr1.reverse(); // reverse returns a reference to initial array
   const arr3 = "jones".split('');
   arr2.push(arr3);
   console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
