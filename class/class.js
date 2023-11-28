@@ -15,7 +15,7 @@ class A {
 
 // • You cannot call class as function without new
 // • classes don't hoist
-// • cannot dublicate class name
+// • cannot duplicate class name
 // • constructor can be only regular function, not getter, or generator
 // • You cannot call class constructor from prototype
 // • Static methods are writable and configurable, but not enumerable.

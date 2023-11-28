@@ -47,5 +47,6 @@ const ob2 = {
   whoIsIt: ob1.whoIsIt // and arrow function will grab context from where it was created.
 };
 console.log(ob2.whoIsIt() === ob2); // false
+console.log(ob2.whoIsIt() === ob1); // true
 const ob3 = new CheckThis();
 console.log(ob3.whoIsIt() === ob3); // true

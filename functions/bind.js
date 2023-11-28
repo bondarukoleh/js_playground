@@ -1,7 +1,9 @@
 Function.prototype.myBind = function (context, ...predefinedArgs) {
+  // self is pointing to the Function prototype where apply() is present
+  // without "self", this in the returned function will point to dynamic context
   const self = this;
   return function (...args) {
-    predefinedArgs.length ? self.apply(context, [...predefinedArgs, ...args]) : self.apply(context, args);
+    self.apply(context, predefinedArgs.length ? [...predefinedArgs, ...args] : args);
   };
 };
 
@@ -28,7 +30,7 @@ function knowHowItsCalled() {
 
   WeirdFunc() // undefined
   const a = new WeirdFunc() // [Function: weirdFunc]
-  WeirdFunc.call({'a': 1}) // undefined
+  WeirdFunc.call({ 'a': 1 }) // undefined
 }
 
 // knowHowItsCalled();
