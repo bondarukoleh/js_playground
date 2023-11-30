@@ -46,6 +46,6 @@ hoist1();
 
   b();
   // console.log(declaredInnerVar); /*ReferenceError: declaredInnerVar is not defined*/
-  console.log(declaredOuterVar); // initialised from function
+  console.log(declaredOuterVar); // initialized from function
   console.log(declaredInnerButBecameGlobal); // inner initialized
 }

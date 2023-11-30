@@ -49,8 +49,8 @@ const checkFunctionInheritance = () => {
   }
 
   //B.prototype.constructor = B; value will be enumerable, which is wrong
-  // Object.defineProperty(B.prototype, 'constructor', { configurable: true, enumerable: false, value: B }) - we can do 
-  // this way, but why if we have ability to 
+  // Object.defineProperty(B.prototype, 'constructor', { configurable: true, enumerable: false, value: B }) - we can do
+  // this way, but why if we have ability to
   B.prototype = Object.create(A.prototype, {constructor: {configurable: true, enumerable: false, value: B}});
   B.prototype.bMethod = () => cl('B method');
   // B.prototype.__proto__ = A.prototype //cheat, but the same result. And __proto__ isn't enumerable
