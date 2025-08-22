@@ -1,0 +1,1 @@
+// catch in try / catch block now can be without parameter.

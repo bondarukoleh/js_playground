@@ -43,3 +43,21 @@ ES6 modules.
 Asynchronous, file-based, simple-syntax modules.
 To use them we need to compile our code to ES5 JS. We can use Traceur, Babel or any other
 compiler.
+
+Node treats file also by by file extension
+.mjs → always ESM (ignores package.json setting).
+.cjs → always CommonJS (ignores package.json setting).
+.js → follows the type field in package.json. (for example for mjs "type": "module")
+
+import.meta contains metadata for the current module. Its first widely supported property is
+ import.meta.url which contains a string with the URL of the current module’s file.
+
+ // ESM doesn't have __filename and __dirname because it's universal, there is workaround.
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+console.log(__filename);
+console.log(__dirname);

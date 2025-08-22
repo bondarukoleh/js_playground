@@ -31,12 +31,26 @@ const obj = {
     Array.prototype.push.call(this, val);
   }
 };
-obj.add('value');
-cl(Object.getOwnPropertyNames(obj)); // [ '0', 'add', 'length' ]
-cl(obj[0]); // value
-cl(obj.length); // 1
+// obj.add('value');
+// cl(Object.getOwnPropertyNames(obj)); // [ '0', 'add', 'length' ]
+// cl(obj[0]); // value
+// cl(obj.length); // 1
+
+// flatMap()
+/** If you need to filter and map at the same time
+ *  from map part it can return more than one object, that will be flattened in the end in one array
+ */
+function flatM() {
+  const arr = [1, 2, 3]
+  cl(arr.flatMap((value) => value === 2 ? [2, 333] : [value])) //[ 1, 2, 333, 3 ]
+}
+// flatM()
 
 
+function flat() {
+  cl([1, [2], 3].flat()) //[ 1, 2, 3 ]
+}
+// flat()
 
 
 
